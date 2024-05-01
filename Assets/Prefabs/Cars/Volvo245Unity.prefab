@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2378361134955658993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7660442880017886100}
+  - component: {fileID: 4690951543194198711}
+  - component: {fileID: 3933723544392026037}
+  - component: {fileID: 6990632462171404847}
+  m_Layer: 0
+  m_Name: Volvo245Unity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7660442880017886100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2378361134955658993}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7051939, y: 0.0519771, z: 0.05197709, w: 0.7051939}
+  m_LocalPosition: {x: 0.53096616, y: 1.03, z: 2.2206657}
+  m_LocalScale: {x: 1.495, y: 1.495, z: 1.495}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 8.431}
+--- !u!33 &4690951543194198711
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2378361134955658993}
+  m_Mesh: {fileID: -2124705421725058983, guid: 67c725617ded5c64aa4235bcab1f63aa, type: 3}
+--- !u!23 &3933723544392026037
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2378361134955658993}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a575f9a2b91e33498c433b8021f5929, type: 2}
+  - {fileID: 2100000, guid: d96af22f8413beb4ab80946cc5713f36, type: 2}
+  - {fileID: 2100000, guid: 56ffd27cf1ccb4f4c9d14bba396fdbe8, type: 2}
+  - {fileID: 2100000, guid: 9ee7d7b2d34217444a1408da3cef9be7, type: 2}
+  - {fileID: 2100000, guid: 8a8ccefccb4a6834a913c03b8683e46b, type: 2}
+  - {fileID: 2100000, guid: d1e7ff8762977954ea9b2e0af6005300, type: 2}
+  - {fileID: 2100000, guid: abbec2ad6d110f44fbafcba4adef0383, type: 2}
+  - {fileID: 2100000, guid: 31490c84d93b56a4ba7c88daa4f941bb, type: 2}
+  - {fileID: 2100000, guid: 1868f6b0aec84ae46a56a89d39adc7da, type: 2}
+  - {fileID: 2100000, guid: a6851c47676f2fc4f8c9c05b6b641f21, type: 2}
+  - {fileID: 2100000, guid: 1868f6b0aec84ae46a56a89d39adc7da, type: 2}
+  - {fileID: 2100000, guid: f2b58568f8922874ebbcb649ade786fd, type: 2}
+  - {fileID: 2100000, guid: 9c14ee1ed4805eb499ccea881eb6a030, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6990632462171404847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2378361134955658993}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4254377, y: 3.3514016, z: 0.95790446}
+  m_Center: {x: -0.00000007519785, y: -0.041213874, z: 0.4838152}
