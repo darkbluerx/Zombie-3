@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e9525cd564964da6d1ea7f69027b8, type: 3}
+  m_Name: openDoorAudioEvent
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 777ea82e92be0894ba3fd8181bd20f94, type: 3}
+  - {fileID: 8300000, guid: d7a8e8c47cf02f143adb48a66e31c934, type: 3}
+  Volume: 1
+  RandomizeVolume: 0
+  Pitch: 1
+  RandomizePitch: 0.21
