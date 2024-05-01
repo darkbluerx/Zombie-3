@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1739ac8f37ca74cbf506c4a34f5325, type: 3}
+  m_Name: DoupleBarrelData
+  m_EditorClassIdentifier: 
+  gunName: Shotgun
+  itemSprite: {fileID: 21300000, guid: 03ec6286ebcad0d4cb1ef36af4ae46ff, type: 3}
+  shoot: {fileID: 11400000, guid: d51393bd2f43320459df22aa1b4cba4d, type: 2}
+  reload: {fileID: 11400000, guid: f55e1325defdf674385d98f7361adcd8, type: 2}
+  fireRate: 100
+  damage: 16
+  magazineSize: 2
+  reloadTime: 2.2
+  scatterAngle: 3
+  bulletsPerShot: 13
+  bulletSpeed: 15
+  bulletLifeTime: 1
+  pushingForce: 2.5
+  slowMotion: 1.5

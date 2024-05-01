@@ -1,0 +1,4 @@
+repository "Zombie 3@antti90sironen@cloud"
+  path "/"
+    br "/main"
+    co "/main"

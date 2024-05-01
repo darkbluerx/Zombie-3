@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f510ebaf44985945ae777eface07525, type: 3}
+  m_Name: ZombieData
+  m_EditorClassIdentifier: 
+  unitName: Zombie
+  hitAudioEvent: {fileID: 11400000, guid: 48388156605d28d4cb370ebe6945a2f4, type: 2}
+  deathAudioEvent: {fileID: 11400000, guid: d83a315d48ceaf84fa064512ca7203d7, type: 2}
+  shoutAudioEvent: {fileID: 11400000, guid: db0f4added6b45741917cdd4b22a9c60, type: 2}
+  moveSpeed: 0.5
+  runSpeed: 0.5
+  stamina: 0.5
+  minHealth: 50
+  maxHealth: 100
