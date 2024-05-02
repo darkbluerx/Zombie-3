@@ -11,6 +11,9 @@ TagManager:
   - Grid
   - Bullet
   - Damageable
+  - GreenKey
+  - RedKey
+  - BlueKey
   layers:
   - Default
   - TransparentFX
@@ -23,8 +26,8 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
+  - Item
+  - Bullet
   - 
   - Aiming
   - 
