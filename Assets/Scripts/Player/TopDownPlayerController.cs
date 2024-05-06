@@ -116,14 +116,14 @@ public class TopDownPlayerController : MonoBehaviour
                 if(hitInfo.collider.gameObject.layer != LayerMask.NameToLayer("Enemy"))
                 {
                     // Draw the raycast beam
-                    //Debug.DrawRay(raycastOrigin, ray.direction * hitInfo.distance, Color.green);
+                    Debug.DrawRay(raycastOrigin, ray.direction * hitInfo.distance, Color.green);
                     return (succes: true, position: hitInfo.point);
                 }
             }
         }
 
         // Draw the raycast beam, if the ray does not hit anything
-        //Debug.DrawRay(raycastOrigin, ray.direction * 1000f, Color.red);
+        Debug.DrawRay(raycastOrigin, ray.direction * 1000f, Color.red);
         return (succes: false, Position: Vector3.zero);
     }
 
