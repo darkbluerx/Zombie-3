@@ -247,7 +247,7 @@ CharacterController:
   m_StepOffset: 0.35
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.08, z: 0}
+  m_Center: {x: 0, y: 1.12, z: 0}
 --- !u!136 &4111522300787924307
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.4
   m_Height: 2
