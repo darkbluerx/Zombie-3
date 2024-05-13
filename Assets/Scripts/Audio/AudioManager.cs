@@ -2,6 +2,7 @@ using audio;
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 [RequireComponent(typeof (AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -9,10 +10,14 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; } //Singleton
 
     public event Action OnPlayBackgroundMusicEvent;
-   
-    AudioSource audioSource;
+
+    public Slider musicVolumeSlider; // Slider for music volume
+    public Slider sfxVolumeSlider; // Slider for sound volume
+
+    AudioSource sfxAudioSorce;
     [Header("Automatically assign audio source")]
-    [SerializeField] AudioSource audioSource2;
+    [SerializeField] AudioSource musicAudioSource;
+
 
     [Header("Traps")]
     public AudioEvent[] trapAudioEvents;
@@ -46,35 +51,64 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
 
-        audioSource = GetComponent<AudioSource>();
-        audioSource2 = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>(); // Find the background music audio source
-    }
-
-    private void OnEnable()
-    {
-        OnPlayBackgroundMusicEvent += PlayBackgroundMusic;    
+        sfxAudioSorce = GetComponent<AudioSource>();
+        musicAudioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>(); // Find the background music audio source
     }
 
     private void Start()
     {
-        OnPlayBackgroundMusicEvent?.Invoke();
+        OnPlayBackgroundMusicEvent?.Invoke(); // Play background music
+
+        if (PlayerPrefs.HasKey("MusicVolume")) // If the player has set the volume before
+        {
+            float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume"); // Get the saved volume
+            musicVolumeSlider.value = savedMusicVolume; // Set the volume to the saved volume
+            SetMusicVolume(savedMusicVolume); // Set the volume to the saved volume
+        }
+        else
+        {
+            musicVolumeSlider.value = 0.5f; // Set the volume to the default volume
+            SetMusicVolume(0.5f); // Set the volume to the default volume
+        }
+
+        if(PlayerPrefs.HasKey("SFXVolume")) // If the player has set the volume before
+        {
+            float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume"); // Get the saved volume
+            sfxVolumeSlider.value = savedSFXVolume; // Set the volume to the saved volume
+            SetSFXVolume(savedSFXVolume); // Set the volume to the saved volume
+        }
+        else
+        {
+            sfxVolumeSlider.value = 0.5f; // Set the volume to the default volume
+            SetSFXVolume(0.5f); // Set the volume to the default volume
+        }
+
+        musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume); // Set the volume of the music
+        sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume); // Set the volume of the sound
     }
 
-    private void PlayBackgroundMusic() // Play background music
+    public void SetMusicVolume(float volume) // Set the volume of the music
     {
-        //backgroundAudioEvent.Play(audioSource2);
+        musicAudioSource.volume = volume; // Set the volume of the music
+        PlayerPrefs.SetFloat("SFXVolume", volume); // Save the volume
+    }
+
+    public void SetSFXVolume(float volume) // Set the volume of the music
+    {
+        sfxAudioSorce.volume = volume; // Set the volume of the music
+        PlayerPrefs.SetFloat("MusicVolume", volume); // Save the volume
     }
 
     public void StopBackgroundMusic()
     {
-        audioSource2.Stop(); // Stop background music
+        musicAudioSource.Stop(); // Stop background music
     }
 
     public void GetTrapAudioEvent() // Play trap button sound
     {
         if(buttonTrapAudioEvent != null)
         {
-            buttonTrapAudioEvent.Play(audioSource);
+            buttonTrapAudioEvent.Play(sfxAudioSorce);
         }
     }
 
@@ -82,7 +116,7 @@ public class AudioManager : MonoBehaviour
     {
         if (playerHitAudioEvents != null && !isPlayerHitAudioPlaying)
         {
-            playerHitAudioEvents.Play(audioSource);
+            playerHitAudioEvents.Play(sfxAudioSorce);
             isPlayerHitAudioPlaying = true;
             StartCoroutine(ResetPlayerHitAudioFlag()); // play the sound once
         }
@@ -92,7 +126,7 @@ public class AudioManager : MonoBehaviour
     {
         if (enemyHitAudioEvents != null && !isEnemyHitAudioPlaying)
         {
-            enemyHitAudioEvents.Play(audioSource);
+            enemyHitAudioEvents.Play(sfxAudioSorce);
             isEnemyHitAudioPlaying = true;
             StartCoroutine(ResetEnemyHitAudioFlag()); // play the sound once
         }
@@ -133,17 +167,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(TrapType trapType) //Play the sound related to the trapType
     {
-        trapAudioEvents[(int)trapType].Play(audioSource); 
+        trapAudioEvents[(int)trapType].Play(musicAudioSource); 
     }
 
     public void PlayCorrectSound(AudioEvent audioEvent) //you can call this method from anywhere and pass the audioEvent you want to play
     {
-        audioEvent.Play(audioSource);  //script what calls this method, remember to add audioEvent parameter to it
+        audioEvent.Play(musicAudioSource);  //script what calls this method, remember to add audioEvent parameter to it
         //examble: AudioManager.Instance.PlayCorrectSound(audioEvent:openDoorAudioEvent);
-    }
-
-    private void OnDisable()
-    {
-       //OnPlayBackgroundMusicEvent -= PlayBackgroundMusic;
-    }  
+    }   
 }

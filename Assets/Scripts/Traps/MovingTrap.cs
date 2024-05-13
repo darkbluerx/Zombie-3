@@ -22,7 +22,7 @@ public class MovingTrap : MonoBehaviour
         switch (movingAxis)
         {
             case MovingAxis.X:
-                
+
                 StartCoroutine(MovesTowards_X());
                 break;
             case MovingAxis.UpY:
@@ -54,7 +54,7 @@ public class MovingTrap : MonoBehaviour
         float originalXpos = transform.position.x; // Save the original position
         while (transform.position.x < originalXpos + movingHeight)
         {
-            transform.Translate(-Vector3.right * Time.deltaTime * movingSpeed); // Move the object to the right, x axis
+            transform.Translate(Vector3.right * Time.deltaTime * movingSpeed); // Move the object to the right, x axis
             yield return null;
         }
     }
@@ -103,4 +103,3 @@ public class MovingTrap : MonoBehaviour
         }
     }
 }
-
