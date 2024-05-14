@@ -18,6 +18,8 @@ namespace weapon
     [RequireComponent(typeof(AudioSource))]
     public class Gun : Weapon
     {
+        Gun gunComponent;
+
         public static Action<bool> OnGetGun; //play gun movement animations
 
         public static event Action OnAllAmmoChanged;
@@ -90,6 +92,7 @@ namespace weapon
 
         private void Awake()
         {
+            gunType = GetGunType();
             audioSource = GetComponent<AudioSource>();
             currentAmmo = gunData.magazineSize; //the amount of bullets in the magazine  
         }
@@ -108,27 +111,45 @@ namespace weapon
             OnCurrentGun?.Invoke(gunType); // Invoke the event to set the current gun, update ammo text when switching guns
 
             Item.OnHaveThisGun += HaveThisGun;
+
+            Settings.OnDisableGun += DisableGun;
+            Settings.OnEnableGun += EnableGun;
         }
 
+        public void DisableGun()
+        {
+            if(gunComponent != null)
+            {
+                gunComponent.enabled = false;
+            }
+        }
 
-        // Muutetaan haveGun22 arrayksi
+        public void EnableGun()
+        {
+            if (gunComponent != null)
+            {
+                gunComponent.enabled = true;
+            }
+        }
+   
+        //Collect all the guns
         public bool[] haveGun22 = new bool[Enum.GetValues(typeof(GunType)).Length];
 
         private void HaveThisGun(bool haveGun, GunType gunType)
-        {
-            // Asetetaan oikea boolean arvo oikeaan indeksiin
+        {       
+            //Set the correct boolean value to the correct index
             int gunIndex = (int)gunType;
             haveGun22[gunIndex] = haveGun;
 
-            // Tarkistetaan, onko jokin muu ase ker‰tty, jos ei, kutsutaan OnGetGun
+            //Check if any gun is collected, if not, call OnGetGun
             bool anyGunCollected = Array.Exists(haveGun22, gun => gun);
             OnGetGun?.Invoke(anyGunCollected);
         }
 
-        // Lis‰‰ bool-muuttuja, joka kertoo, onko t‰m‰ ase valittuna
+        //Add a bool variable that tells if this gun is selected
         private bool isSelected;
 
-        // Metodi asettaa t‰m‰n aseen valituksi
+        //Method sets this gun as selected
         public void SetSelected(bool selected)
         {
             isSelected = selected;
@@ -139,7 +160,7 @@ namespace weapon
             ShootInput();
             ReloadInput();
 
-            // Kutsutaan HaveThisGun-metodia vain, jos t‰m‰ ase on valittuna
+            // Call the HaveThisGun method only if this gun is selected
             if (isSelected)
             {
                 HaveThisGun(haveGun22[(int)gunType], gunType);
@@ -179,20 +200,6 @@ namespace weapon
 
                 for (int i = 0; i < gunData.bulletsPerShot; i++)
                 {
-                    // Orginal versio
-
-                    //GameObject bullet = BulletPool.Instance.GetBullet();
-                    //bullet.transform.position = firePoint.position;
-                    //bullet.transform.rotation = firePoint.rotation;
-                    //ProjectileScatter();
-
-                    //Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-                    //bulletRb.velocity = transform.forward * gunData.bulletSpeed + bulletSpread;
-                    //AllAmmo--;
-
-
-                    //SpawnEffect();
-                    //OnSpawnEffect?.Invoke();
                     GameObject muzzleflash = BulletPool.Instance.GetMuzzleflash();
                     muzzleflash.transform.position = muzzleflashPosition.position;
                     muzzleflash.transform.rotation = muzzleflashPosition.rotation;
@@ -217,23 +224,8 @@ namespace weapon
                         bullet.SetDamage(gunData.damage); // Set the damage amount for the bullet
                     }
 
-
                     bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * gunData.bulletSpeed + ProjectileScatter();
-
-
-                    //Find mouse position in the world
-                    //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    //RaycastHit hit;
-
-                    //int layerMask = LayerMask.GetMask("Ground");
-
-                    //if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-                    //{
-                    //    //Aim the bullet towards the mouse target horizontally
-                    //    Vector3 targetPosition = new Vector3(hit.point.x, firePoint.position.y, hit.point.z - 1.8f);
-                    //    bullet.transform.LookAt(targetPosition);
-                    //    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * gunData.bulletSpeed + ProjectileScatter();
-                    //}         
+       
                 }
                 AllAmmo--; // Reduce the all ammo by one
                 CurrentAmmo--; // Reduce the current ammo by one
@@ -250,7 +242,7 @@ namespace weapon
             return bulletSpread = new Vector3(randomSpreadX, 0, randomSpreadZ);
         }
 
-        //commented when not needed
+        //commented when not needed, draw a ray to see the bullet spread
         //private void OnDrawGizmos()
         //{
         //    Gizmos.color = Color.red;

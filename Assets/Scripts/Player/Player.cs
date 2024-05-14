@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using weapon;
 
-[RequireComponent(typeof(AudioSource))]
+//[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     public event Action OnHitPlayerEvent; //play hit sound
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerHealth = GetComponent<Health>();
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         player = GameObject.Find("Player");
     }
 
@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
-        unitsStats.deathAudioEvent.Play(audioSource);
+        //unitsStats.deathAudioEvent.Play(audioSource);
+        AudioManager.Instance.PlayCorrectSound(audioEvent:unitsStats.deathAudioEvent); // call AudioManager to play game over sound
 
         TopDownPlayerController playerController = GetComponent<TopDownPlayerController>();
         playerController.enabled = false; // disable player movement

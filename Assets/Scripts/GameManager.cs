@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
     }
+
     public void Level1Complete()
     {
         OnLevel1Complete?.Invoke();
