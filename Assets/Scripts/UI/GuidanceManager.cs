@@ -12,8 +12,8 @@ public class GuidanceManager : MonoBehaviour
     public GuidanceSO[] MainStory; // Main story for each level
     public GuidanceSO[] EndStory; // End story for each level
 
-    [Header("Drag the hintText object here")]
-    public TMP_Text hintText;
+    [Header("Drag the GuidangeText object here, GameUI/SEtting & Guindange/Panel/GuidangeText")]
+    public TMP_Text guidangeText;
 
     [Header("Drag the closeTextWindow/button object here")]
     [SerializeField] UnityEngine.UI.Button closeTextButton;
@@ -67,11 +67,11 @@ public class GuidanceManager : MonoBehaviour
         {
             if (MainStory[i].level == levelNumber)
             {
-                hintText.text = MainStory[i].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
+                guidangeText.text = MainStory[i].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
                 return;
             }
         }
-        hintText.text = "Hint text not found for this level"; 
+        guidangeText.text = "Hint text not found for this level"; 
     }
 
     int GetLevelNumber()
@@ -100,11 +100,11 @@ public class GuidanceManager : MonoBehaviour
         {
             if (EndStory[x].level == levelNumber)
             {
-                hintText.text = EndStory[x].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
+                guidangeText.text = EndStory[x].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
                 return;
             }
         }
-        hintText.text = "EndHint text not found for this level";
+        guidangeText.text = "EndHint text not found for this level";
     }
 
     private void SetActiveTextCanvas()
@@ -114,7 +114,7 @@ public class GuidanceManager : MonoBehaviour
 
     private void CloseWindow()
     {
-        hintText.text = "";
+        guidangeText.text = "";
         closeTextButton.onClick.RemoveListener(CloseWindow);
         TextCanvas.SetActive(false);
     }

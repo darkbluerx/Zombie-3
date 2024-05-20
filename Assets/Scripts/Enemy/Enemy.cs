@@ -3,7 +3,7 @@ using Pathfinding;
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(AudioSource))]
+//[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
     public event Action OnHitEnemyEvent; //play hit sound
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     AIDestinationSetter destinationSetter; // A* Pathfinding Project
     public Health enemyHealth;
 
-    [SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioSource audioSource;
     [Header("Stats"), Tooltip("Drag Enemy Stats scriptable object here")]
     [SerializeField] UnitsStats unitsStats;
     [Space]
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemyHealth = GetComponent<Health>();
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         characterController = GetComponent<Collider>();
         destinationSetter = GetComponent<AIDestinationSetter>();
 
@@ -38,10 +38,10 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Health component not found!");
         }
 
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource component not found!");
-        }
+        //if (audioSource == null)
+        //{
+        //    Debug.LogError("AudioSource component not found!");
+        //}
     }
 
     private void OnEnable()
@@ -62,7 +62,8 @@ public class Enemy : MonoBehaviour
     private void Dead()
     {
         //Debug.Log("Enemy is dead!");
-        unitsStats.deathAudioEvent.Play(audioSource); // play death sound
+        //unitsStats.deathAudioEvent.Play(audioSource); // play death sound
+        AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.deathAudioEvent);
         StopCoroutine(DealDamageOverTime());
         
         destinationSetter.enabled = false; // disable zombie movement
@@ -93,7 +94,8 @@ public class Enemy : MonoBehaviour
             int randomTime = UnityEngine.Random.Range(10, timeInterval);
 
             yield return new WaitForSeconds(timeInterval);
-            unitsStats.shoutAudioEvent.Play(audioSource);
+            //unitsStats.shoutAudioEvent.Play(audioSource);
+            AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.shoutAudioEvent);
         }
     }
 

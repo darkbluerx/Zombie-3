@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace weapon
@@ -15,7 +16,7 @@ namespace weapon
     }
 
     [System.Serializable]
-    [RequireComponent(typeof(AudioSource))]
+    //[RequireComponent(typeof(AudioSource))]
     public class Gun : Weapon
     {
         Gun gunComponent;
@@ -33,8 +34,8 @@ namespace weapon
 
         [SerializeField] string gunName = "Gun";
 
-        [SerializeField] AudioSource audioSource;
-        [Space]
+        //[SerializeField] AudioSource audioSource;
+        //[Space]
 
         [Header("Gun Data and features")]
         public GunData gunData;
@@ -93,7 +94,7 @@ namespace weapon
         private void Awake()
         {
             gunType = GetGunType();
-            audioSource = GetComponent<AudioSource>();
+            //audioSource = GetComponent<AudioSource>();
             currentAmmo = gunData.magazineSize; //the amount of bullets in the magazine  
         }
 
@@ -195,7 +196,8 @@ namespace weapon
             
             if(CanShoot())
             {
-                gunData.shoot.Play(audioSource);
+                //gunData.shoot.Play(audioSource);
+                AudioManager.Instance.PlayCorrectSound(audioEvent: gunData.shoot);
                 OnShootAnimation?.Invoke();
 
                 for (int i = 0; i < gunData.bulletsPerShot; i++)
@@ -251,7 +253,8 @@ namespace weapon
 
         public override IEnumerator Reload()
         {
-            gunData.reload.Play(audioSource);
+            //gunData.reload.Play(audioSource);
+            AudioManager.Instance.PlayCorrectSound(audioEvent: gunData.reload);
             isReloading = true;
            
             yield return new WaitForSeconds(gunData.reloadTime);

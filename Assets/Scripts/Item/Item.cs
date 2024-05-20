@@ -15,7 +15,7 @@ public enum ItemType
 [System.Serializable]
 public class Item : MonoBehaviour
 {
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
 
     public static event Action<int, ItemType, GunType> OnItemAdded;
     public static event Action<GunType> OnGunAdded; //get gun model
@@ -38,21 +38,23 @@ public class Item : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        //audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && isAmmo) //collect ammo and amount
         {
-            itemData.pickUpAudioEvent.Play(audioSource);
+            //itemData.pickUpAudioEvent.Play(audioSource);
+            AudioManager.Instance.PlayCorrectSound(audioEvent: itemData.pickUpAudioEvent);
             var randomAmount = UnityEngine.Random.Range(itemData.minAmount, itemData.maxAmount);
 
             CollectItem(randomAmount);
         }
         else if (other.CompareTag("Player") && !isAmmo) //collect weapon
         {
-            itemData.pickUpAudioEvent.Play(audioSource);
+            //itemData.pickUpAudioEvent.Play(audioSource);
+            AudioManager.Instance.PlayCorrectSound(audioEvent: itemData.pickUpAudioEvent);
             CollectWeapon(gunType);
         }
 
@@ -61,7 +63,8 @@ public class Item : MonoBehaviour
 
     public void CollectItem(int amount)
     {
-        itemData.pickUpAudioEvent.Play(audioSource);
+        //itemData.pickUpAudioEvent.Play(audioSource);
+        AudioManager.Instance.PlayCorrectSound(audioEvent: itemData.pickUpAudioEvent);
         OnItemAdded?.Invoke(amount, itemType, gunType); //Invoke the event
         WeaponUI.Instance.AddAmmo(gunType, true); //set ammo image active true
         UI.Instance.UpdateAmmoText(); //update ammo text

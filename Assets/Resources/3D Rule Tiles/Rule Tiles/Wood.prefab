@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0316ac0f9947a2346b16b69aab73adb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruleTile: {fileID: 11400000, guid: c6db6d7c56fd8e24c8c3ff664aa1ec6d, type: 2}
+  ruleTile: {fileID: 11400000, guid: 8e463e1b193b30548a797d341b559546, type: 2}
   ruleTileController: {fileID: 0}
   placeholder: {fileID: 7419114260175256988}
   neighborTilePositions: 0000000101000000

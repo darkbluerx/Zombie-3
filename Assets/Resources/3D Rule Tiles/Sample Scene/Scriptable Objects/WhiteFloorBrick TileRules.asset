@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc605feec4586046afce27060d75eb8, type: 3}
   m_Name: WhiteFloorBrick TileRules
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 016b3c5e48dc87e439c2b2301c540ceb, type: 2}
+  material: {fileID: 2100000, guid: a0c5a034f116f614c98ccbe70e2578b1, type: 2}
   rules:
   - TR: 1
     T: 1

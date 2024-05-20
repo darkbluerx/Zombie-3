@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject player;
 
     [Header("Audio, automatically assign audio source")]
-    [SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioSource audioSource;
     [Space]
 
     [Header("Player Stats, needed")]

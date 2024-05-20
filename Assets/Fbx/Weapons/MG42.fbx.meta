@@ -3,23 +3,7 @@ guid: 3cfd25d1985033e45ae701006d2b6fb8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BulletMetal
-    second: {fileID: 2100000, guid: 4a64234522ce7ce4a8f525758fe5cda7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: IronOxideDarker
-    second: {fileID: 2100000, guid: 4c874b68f82be0947849eed68e8549ab, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Orange
-    second: {fileID: 9003353085549565770, guid: 7ec994f81d62f534ab942ea6a812befa,
-      type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
