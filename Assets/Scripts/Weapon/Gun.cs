@@ -28,11 +28,11 @@ namespace weapon
         public static event Action<GunType> OnCurrentGun;
         public static event Action<GunType, bool> OnHaveAmmo;
         public static event Action OnShootAnimation; //play the shoot animation
-        public static event Action OnGetDamageAmount;
+        //public static event Action OnGetDamageAmount;
 
         public GunType gunType; //the type of the gun
 
-        [SerializeField] string gunName = "Gun";
+        //[SerializeField] string gunName = "Gun";
 
         //[SerializeField] AudioSource audioSource;
         //[Space]

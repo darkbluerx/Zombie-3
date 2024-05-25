@@ -7,7 +7,7 @@ public class ZombieController : MonoBehaviour
     //[Header("Zombie Animations")]
     //public event Action OnZombieIdle;
     public event Action OnZombieWalk;
-    public event Action<int> OnTakeDamage;
+    //public event Action<int> OnTakeDamage;
     //public event Action OnDeadEvent;
 
     //public event Action OnZombieAttack;

@@ -6,7 +6,7 @@ using System;
 [RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
-    public event Action OnHitEnemyEvent; //play hit sound
+    //public event Action OnHitEnemyEvent; //play hit sound
     public static event Action OnCountZombieKillEvent; //count zombie kill
 
     AIDestinationSetter destinationSetter; // A* Pathfinding Project

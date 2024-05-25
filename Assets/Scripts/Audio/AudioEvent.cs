@@ -39,10 +39,10 @@ public class AudioEvent : AudioEventBase
         if (audioClips == null) return;
         if (audioClips.Length == 0) return;
         audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
-        audioSource.volume = Random.Range(AudioManager.Instance.GetSFXVolume() - RandomizeVolume, AudioManager.Instance.GetSFXVolume()); // get the volume from the audio manager
+        audioSource.volume = Random.Range(AudioManager.Instance.GetSFXVolume() /Volume - RandomizeVolume, AudioManager.Instance.GetSFXVolume()/Volume); // get the volume from the audio manager
         audioSource.pitch = Random.Range(Pitch - (RandomizePitch / 2), Pitch + RandomizePitch / 2);
-        audioSource.PlayOneShot(audioSource.clip, 1f);
+        //audioSource.PlayOneShot(audioSource.clip, 1f);
         //audioSource.PlayOneShot(audioSource.clip, audioSource.volume);
-        audioSource.PlayOneShot(audioSource.clip, AudioManager.Instance.GetSFXVolume()); // get the volume from the audio manager
+        audioSource.PlayOneShot(audioSource.clip, AudioManager.Instance.GetSFXVolume() /Volume); // get the volume from the audio manager
     }
 }

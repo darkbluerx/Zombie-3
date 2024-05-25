@@ -15,6 +15,6 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 8d6f7db1524715447bde05b3349a9a04, type: 3}
   Volume: 1
-  RandomizeVolume: 0.3
+  RandomizeVolume: 0
   Pitch: 1
-  RandomizePitch: 0.6
+  RandomizePitch: 1

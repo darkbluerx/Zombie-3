@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 3413389165498139841}
   - component: {fileID: 9000976366288649410}
   - component: {fileID: 4111522300787924307}
-  - component: {fileID: 2561865445159642490}
+  - component: {fileID: 5292153457377379310}
   m_Layer: 1
   m_Name: Zombie 1
   m_TagString: Damageable
@@ -271,7 +271,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.1, z: 0}
---- !u!82 &2561865445159642490
+--- !u!82 &5292153457377379310
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,19 +280,19 @@ AudioSource:
   m_GameObject: {fileID: 1082090915239505102}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -687897097816777022, guid: 0ad5fa9a18d96fe4482e813e65d1f973,
+  OutputAudioMixerGroup: {fileID: -7852641150154947515, guid: 0ad5fa9a18d96fe4482e813e65d1f973,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.1
+  MinDistance: 0.25
   MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0

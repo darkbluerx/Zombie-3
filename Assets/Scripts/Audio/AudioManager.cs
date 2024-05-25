@@ -94,12 +94,12 @@ public class AudioManager : MonoBehaviour
     public void SetSFXVolume(float volume) // Set the volume of the sfx
     {
         sfxAudioSource.volume = volume; // Set the volume of the sfx
-        PlayerPrefs.SetFloat("SFXVolume", volume); // Save the volume
+        PlayerPrefs.SetFloat("SFXVolume", volume ); // Save the volume
     }
 
     public float GetSFXVolume() // Get the volume of the music
     {
-        return sfxAudioSource.volume; // Get the volume of the music
+        return sfxAudioSource.volume; // Get the volume of the music             
     }
 
     public void StopBackgroundMusic()

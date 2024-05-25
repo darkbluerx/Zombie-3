@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections.Generic;
 
 public class LevelSelectionMenu : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LevelSelectionMenu : MonoBehaviour
 
     [SerializeField] UnityEngine.UI.Button[] levelButtons; // Nappulat
     [SerializeField] GameObject buttonsParent;
+    [SerializeField] List<GameObject> levelPictures; // List of level pictures
 
     int currentLevel;
     int nextLevel;
@@ -29,7 +31,7 @@ public class LevelSelectionMenu : MonoBehaviour
     }
 
     private void Start()
-    {           
+    {
         FinishPoint.OnLevelComplete += UnlockNextLevel;
         if (currentLevel > 1) OnShowMapSelectionCanvas?.Invoke(); // Show the map selection canvas if the player has completed at least one level -> MainMenu.cs
 
@@ -55,6 +57,8 @@ public class LevelSelectionMenu : MonoBehaviour
                         int sceneIndex = i + 1; // +1 because level numbers start from 1 and scene index from 0
                         levelButtons[i].onClick.AddListener(() => LoadLevel(sceneIndex));
 
+                        // Show the picture for the active level
+                        ShowLevelPicture(i);
                     }
                 }
                 else
@@ -90,5 +94,16 @@ public class LevelSelectionMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         //Debug.Log("PlayerPrefs nollattu.");
+    }
+
+    private void ShowLevelPicture(int activeLevelIndex)
+    {
+        for (int i = 0; i < levelPictures.Count; i++)
+        {
+            if (levelPictures[i] != null)
+            {
+                levelPictures[i].SetActive(i == activeLevelIndex);
+            }
+        }
     }
 }
