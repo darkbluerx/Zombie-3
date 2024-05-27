@@ -74,8 +74,7 @@ namespace weapon
                 if (allAmmo == 0)
                 {
                     WeaponUI.Instance.AddAmmo(gunType, false); //set ammo image active false
-                }
-              
+                }        
             }
         }
 

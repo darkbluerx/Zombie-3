@@ -50,9 +50,9 @@ Material:
     - _SphereRadius: 1
     - _VertexFrequency: 4
     m_Colors:
-    - _BackColor: {r: 3.4014544, g: 15.849056, b: 0, a: 1}
-    - _FrebesColor: {r: 3.4014544, g: 15.849056, b: 0, a: 1}
-    - _FrontColor: {r: 3.4014544, g: 15.849056, b: 0, a: 1}
+    - _BackColor: {r: 0.5259967, g: 3.982544, b: 0, a: 1}
+    - _FrebesColor: {r: 0.5259967, g: 3.982544, b: 0, a: 1}
+    - _FrontColor: {r: 0.5259967, g: 3.982544, b: 0, a: 1}
     - _SphereCenter: {r: 0, g: 0, b: 0, a: 0}
     - _VertexAmount: {r: 0.01, g: 0.01, b: 0.01, a: 0}
   m_BuildTextureStacks: []

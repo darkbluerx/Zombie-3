@@ -33,6 +33,39 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-4393957591375471691
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Attenuation
+  m_EffectID: 5fceeda0fbd513041a93f954b7be2c17
+  m_EffectName: Attenuation
+  m_MixLevel: b8cde29366a3458479ece0e055b5539c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-3860665163058980506
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pick Up
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 7d380c992d411de41a98e23ccd16fa57
+  m_Children: []
+  m_Volume: 93d871596a4d1674f9fea4717c3192ec
+  m_Pitch: 34d3453eace39e445901e1062bb62683
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -4393957591375471691}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-1565399084401203812
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -58,6 +91,7 @@ AudioMixerGroupController:
   m_GroupID: d0bc5c5131d087c4ab600a0188a49a58
   m_Children:
   - {fileID: -7852641150154947515}
+  - {fileID: -3860665163058980506}
   m_Volume: 1408bb48ada527b4bb747b02b35f7d6e
   m_Pitch: fc33c0c070f7c394793177f4e30631f2
   m_Send: 00000000000000000000000000000000
@@ -89,6 +123,7 @@ AudioMixerController:
     - 87b200e2af432404b9510098614b0812
     - d0bc5c5131d087c4ab600a0188a49a58
     - da4491b980b6c9841b675cd445747f27
+    - 7d380c992d411de41a98e23ccd16fa57
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -139,6 +174,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     1408bb48ada527b4bb747b02b35f7d6e: -19.928473
     304ec49842ccb6f4a8844f1abf489f0e: -19.928473
+    93d871596a4d1674f9fea4717c3192ec: -0.02577689
     268f5d791244b3343aa03ed94d3973bf: -9.833286
   m_TransitionOverrides: {}
 --- !u!244 &4018401394160669646

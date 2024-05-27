@@ -12,16 +12,14 @@ public enum ItemType
     MGAmmo,
 }
 
-[System.Serializable]
 public class Item : MonoBehaviour
 {
-    //public AudioSource audioSource;
+    //[SerializeField] AudioSource audioSource;
 
     public static event Action<int, ItemType, GunType> OnItemAdded;
     public static event Action<GunType> OnGunAdded; //get gun model
     public static event Action<bool, GunType> OnHaveThisGun;
-    //public static event Action<bool> OnHaveThisGunTest;
-
+  
     [Header("Drag the item information here")]
     [SerializeField] ItemSO itemData;
 
@@ -35,11 +33,6 @@ public class Item : MonoBehaviour
 
     [Header("Is this ammo/weapon?")]
     [SerializeField] bool isAmmo = true;
-
-    private void Awake()
-    {
-        //audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -64,7 +57,7 @@ public class Item : MonoBehaviour
     public void CollectItem(int amount)
     {
         //itemData.pickUpAudioEvent.Play(audioSource);
-        AudioManager.Instance.PlayCorrectSound(audioEvent: itemData.pickUpAudioEvent);
+        //AudioManager.Instance.PlayCorrectSound(audioEvent: itemData.pickUpAudioEvent);
         OnItemAdded?.Invoke(amount, itemType, gunType); //Invoke the event
         WeaponUI.Instance.AddAmmo(gunType, true); //set ammo image active true
         UI.Instance.UpdateAmmoText(); //update ammo text
@@ -74,6 +67,5 @@ public class Item : MonoBehaviour
     {
         OnGunAdded?.Invoke(gunType);  //call event in WeaponUI script AddGun(gunType), set gun UI active
         OnHaveThisGun?.Invoke(true, gunType); //
-        //OnHaveThisGunTest?.Invoke(true); //
     }
 }
