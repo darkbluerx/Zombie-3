@@ -5,12 +5,10 @@ using UnityEngine;
 public class ZombieController : MonoBehaviour
 {
     //[Header("Zombie Animations")]
-    //public event Action OnZombieIdle;
-    public event Action OnZombieWalk;
-    //public event Action<int> OnTakeDamage;
-    //public event Action OnDeadEvent;
+    public event Action OnZombieIdle; //play idle animation -> ZombieAnimations.cs
+    public event Action OnZombieWalk; //play walk animation -> ZombieAnimations.cs
 
-    //public event Action OnZombieAttack;
+    public event Action OnZombieAttack;
 
     CharacterController characterController;
 
@@ -30,6 +28,10 @@ public class ZombieController : MonoBehaviour
         if (characterController.velocity.magnitude > 0)
         {
             OnZombieWalk?.Invoke();
+        }
+        if (characterController.velocity.magnitude == 0)
+        {
+            OnZombieIdle?.Invoke();
         }
     }
 }

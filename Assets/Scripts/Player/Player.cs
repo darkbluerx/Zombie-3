@@ -41,9 +41,8 @@ public class Player : MonoBehaviour
         Gun gun = GetComponentInChildren<Gun>();
         gun.enabled = false;
 
-        Invoke("LoadGameOver", 3f);
-        //Destroy(gameObject, 4f);
-        Invoke("DisablePlayer", 4f);
+        Invoke("LoadGameOver", 3f); // load game over scene after 3 seconds
+        Invoke("DisablePlayer", 4f); // disable player after 4 seconds
     }
 
     private void DisablePlayer()

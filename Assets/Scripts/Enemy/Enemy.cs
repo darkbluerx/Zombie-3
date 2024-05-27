@@ -6,8 +6,10 @@ using System;
 [RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
-    //public event Action OnHitEnemyEvent; //play hit sound
-    public static event Action OnCountZombieKillEvent; //count zombie kill
+    public event Action OnAttack; //play hit sound
+    public static event Action OnCountZombieKillEvent; //count zombie kill -> GameInformationWiever.cs
+
+    public event Action OnTakingDamage; //play take damage animation -> ZombieAnimations.cs
 
     AIDestinationSetter destinationSetter; // A* Pathfinding Project
     public Health enemyHealth;
@@ -78,7 +80,8 @@ public class Enemy : MonoBehaviour
 
     private void PainResponse(int damage)
     {
-        //Debug.Log("Ouch!");
+        //Debug.Log("Zombie take dmg!");
+        OnTakingDamage?.Invoke(); // play take damage animation -> ZombieAnimations.cs
         AudioManager.Instance.PlayEnemyTakeDamage(); // call AudiManager to play hit sound
     }
 
@@ -109,7 +112,7 @@ public class Enemy : MonoBehaviour
             if (health != null)
             {
                 IEnumerator coroutine = DealDamageOverTime();
-
+                OnAttack?.Invoke(); // play hit sound -> ZombieAnimations.cs
                 // Call the TakeDamage method and pass the damage amount
                 int remainingHealth = health.TakeDamage(damage);
                 //Debug.Log($"{collision.gameObject.name} take damage: {damage}. Jäljellä oleva terveys: {remainingHealth}");

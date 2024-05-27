@@ -3,9 +3,10 @@ using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    public event Action<int> OnTakeDamage;
-    public event Action OnDeadEvent;
-   
+    public event Action<int> OnTakeDamage; 
+    public event Action OnDeadEvent; //play dead animation -> ZombieAnimations.cs
+    public event Action OnEat; //play eat animation -> ZombieAnimations.cs
+
     [SerializeField] UnitsStats unitsStats;
 
     public int MaxHealth { get; private set; }
@@ -25,15 +26,14 @@ public class Health : MonoBehaviour, IDamageable
         if (CurrentHealth > 0)
         {
             CurrentHealth -= amount;
-
-            // Call the OnTakeDamage event and pass the amount of damage
-            OnTakeDamage?.Invoke(amount); 
+            OnTakeDamage?.Invoke(amount); // Call the OnTakeDamage event and pass the amount of damage
 
             //Check if the character is dead
             if (CurrentHealth <= 0)
             {
                 CurrentHealth = 0;
-                OnDeadEvent?.Invoke();
+                OnDeadEvent?.Invoke(); //play dead animation -> ZombieAnimations.cs
+                OnEat?.Invoke(); //play eat animation -> ZombieAnimations.cs
             }
         }
         return CurrentHealth;

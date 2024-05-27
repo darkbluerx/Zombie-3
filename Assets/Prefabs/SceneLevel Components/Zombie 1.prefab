@@ -80,6 +80,7 @@ MonoBehaviour:
   animator: {fileID: 4991693494016036619}
   zombieController: {fileID: 5777665365280716048}
   health: {fileID: 1609582119231659847}
+  enemy: {fileID: 5214142576583198434}
 --- !u!114 &5777665365280716048
 MonoBehaviour:
   m_ObjectHideFlags: 0
