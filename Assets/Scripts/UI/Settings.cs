@@ -44,13 +44,14 @@ public class Settings : MonoBehaviour
         if (closeGuidanceTextButton == null) { return; }
 
         closeGuidanceTextButton.SetActive(false);
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         settingsPanel.SetActive(true);
         Time.timeScale = 0; // Pause the game
     }
 
     public void CloseSettingsPanel()
     {
+        Cursor.visible = false;
         OnEnableGun?.Invoke(); //enable the Gun scipt, call method EnableGun -> Gun.cs
         closeGuidanceTextButton.SetActive(true);
         Time.timeScale = 1; // Resume the game
