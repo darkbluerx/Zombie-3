@@ -8,10 +8,7 @@ public class ZombieController : MonoBehaviour
     public event Action OnZombieIdle; //play idle animation -> ZombieAnimations.cs
     public event Action OnZombieWalk; //play walk animation -> ZombieAnimations.cs
 
-    public event Action OnZombieAttack;
-
-    CharacterController characterController;
-
+    CharacterController characterController; 
 
     private void Awake()
     {
@@ -25,11 +22,11 @@ public class ZombieController : MonoBehaviour
 
     private void HandleAnimations()
     {
-        if (characterController.velocity.magnitude > 0)
+        if (characterController.velocity.magnitude > 0) // If the zombie is moving play walk animation
         {
             OnZombieWalk?.Invoke();
         }
-        if (characterController.velocity.magnitude == 0)
+        if (characterController.velocity.magnitude == 0) // If the zombie is not moving play idle animation
         {
             OnZombieIdle?.Invoke();
         }

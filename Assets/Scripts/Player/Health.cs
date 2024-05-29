@@ -3,10 +3,12 @@ using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    //Events
     public event Action<int> OnTakeDamage; 
     public event Action OnDeadEvent; //play dead animation -> ZombieAnimations.cs
     public event Action OnEat; //play eat animation -> ZombieAnimations.cs
 
+    [Header("Drag unit stats")]
     [SerializeField] UnitsStats unitsStats;
 
     public int MaxHealth { get; private set; }

@@ -3,25 +3,29 @@ using Pathfinding;
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
-    public event Action OnAttack; //play hit sound
+    //Events
+    public event Action OnAttack; // play attack animation -> ZombieAnimations.cs
     public static event Action OnCountZombieKillEvent; //count zombie kill -> GameInformationWiever.cs
-
     public event Action OnTakingDamage; //play take damage animation -> ZombieAnimations.cs
 
     AIDestinationSetter destinationSetter; // A* Pathfinding Project
     public Health enemyHealth;
+    [Space]
 
-    [SerializeField] AudioSource audioSource;
+    [Header("Drag, audios -20 db in mixer")]
+    [SerializeField] AudioSource sfxAudioSource; //play shout sound
+    [Header("Drag, audios -30 db in mixer")] //play death sound
+    [SerializeField] AudioSource sfxEnemyAudioSource;
+
     [Header("Stats"), Tooltip("Drag Enemy Stats scriptable object here")]
     [SerializeField] UnitsStats unitsStats;
     [Space]
 
     [Header("Enemy Settings")]
     [SerializeField] int damage = 100; // enemy damage
-    [SerializeField] int timeInterval = 20; // how often enemy deals damage
+    [SerializeField] int timeInterval = 10; // how often enemy deals damage
     [Space]
 
     [Header("Enemy Colliders")]
@@ -31,18 +35,14 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemyHealth = GetComponent<Health>();
-        audioSource = GetComponent<AudioSource>();
+        //sfxAudioSource = GetComponent<AudioSource>();
+        //sfxEnemyAudioSource = GetComponent<AudioSource>();
         characterController = GetComponent<Collider>();
         destinationSetter = GetComponent<AIDestinationSetter>();
 
         if (enemyHealth == null)
         {
             Debug.LogError("Health component not found!");
-        }
-
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource component not found!");
         }
     }
 
@@ -58,15 +58,15 @@ public class Enemy : MonoBehaviour
             Debug.LogError("EnemyHealth is null, cannot subsribe to events!");
         }
     
-        StartCoroutine(DealDamageOverTime());
+        StartCoroutine(ShoutOverTime());
     }
 
     private void Dead()
     {
         //Debug.Log("Enemy is dead!");
-        unitsStats.deathAudioEvent.Play(audioSource); // play death sound
+        unitsStats.deathAudioEvent.Play(sfxEnemyAudioSource); // play death sound
         //AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.deathAudioEvent);
-        StopCoroutine(DealDamageOverTime());
+        StopCoroutine(ShoutOverTime());
         
         destinationSetter.enabled = false; // disable zombie movement
         transform.GetComponent<AIPath>().enabled = false; // disable AIPath
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     {
         //Debug.Log("Zombie take dmg!");
         OnTakingDamage?.Invoke(); // play take damage animation -> ZombieAnimations.cs
-        AudioManager.Instance.PlayEnemyTakeDamage(); // call AudiManager to play hit sound
+        AudioManager.Instance.PlayEnemyTakeDamage(); // play take damage sound
     }
 
     public void SetDamage(int newDamage)
@@ -90,14 +90,14 @@ public class Enemy : MonoBehaviour
         damage = newDamage;
     }
 
-    private IEnumerator DealDamageOverTime()
+    private IEnumerator ShoutOverTime()
     {
         while (true)
         {
-            int randomTime = UnityEngine.Random.Range(10, timeInterval);
+            int randomTime = UnityEngine.Random.Range(7, timeInterval);
 
             yield return new WaitForSeconds(timeInterval);
-            unitsStats.shoutAudioEvent.Play(audioSource);
+            unitsStats.shoutAudioEvent.Play(sfxAudioSource);
             //AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.shoutAudioEvent);
         }
     }
@@ -111,8 +111,8 @@ public class Enemy : MonoBehaviour
 
             if (health != null)
             {
-                IEnumerator coroutine = DealDamageOverTime();
-                OnAttack?.Invoke(); // play hit sound -> ZombieAnimations.cs
+                OnAttack?.Invoke(); // play attack animatin -> ZombieAnimations.cs
+
                 // Call the TakeDamage method and pass the damage amount
                 int remainingHealth = health.TakeDamage(damage);
                 //Debug.Log($"{collision.gameObject.name} take damage: {damage}. Jäljellä oleva terveys: {remainingHealth}");
