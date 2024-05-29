@@ -111,7 +111,7 @@ MonoBehaviour:
   sfxEnemyAudioSource: {fileID: 2040646454044641509}
   unitsStats: {fileID: 11400000, guid: 8d0fbc6334f371b4e8d6905b467f3af5, type: 2}
   damage: 100
-  timeInterval: 2
+  timeInterval: 12
   triggerCollider: {fileID: 4111522300787924307}
 --- !u!114 &1609582119231659847
 MonoBehaviour:
@@ -250,7 +250,7 @@ CharacterController:
   m_StepOffset: 0.35
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.12, z: 0}
+  m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!136 &4111522300787924307
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -271,9 +271,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.4
-  m_Height: 2
+  m_Height: 2.3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.1, z: 0}
+  m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!82 &5292153457377379310
 AudioSource:
   m_ObjectHideFlags: 0
@@ -295,8 +295,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 30
+  MinDistance: 2
+  MaxDistance: 40
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

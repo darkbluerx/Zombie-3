@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; } //Singleton
 
-    public event Action OnPlayBackgroundMusicEvent;
+    //public event Action OnPlayBackgroundMusicEvent;
 
     public Slider musicVolumeSlider; // Slider for music volume
     public Slider sfxVolumeSlider; // Slider for sound volume
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
     [Header("Level Audios")]
     public AudioEvent levelComplete;
     public AudioEvent gameOver;
-    public AudioEvent backgroundAudioEvent;
+    //public AudioEvent backgroundAudioEvent;
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        OnPlayBackgroundMusicEvent?.Invoke(); // Play background music
+        //OnPlayBackgroundMusicEvent?.Invoke(); // Play background music
 
         if (PlayerPrefs.HasKey("MusicVolume")) // If the player has set the volume before
         {

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 namespace weapon
@@ -23,16 +22,13 @@ namespace weapon
 
         public static Action<bool> OnGetGun; //play gun movement animations
 
-        public static event Action OnAllAmmoChanged;
-        public static event Action OnCurrentAmmoChanged;
-        public static event Action<GunType> OnCurrentGun;
-        public static event Action<GunType, bool> OnHaveAmmo;
+        public static event Action OnAllAmmoChanged; //UI Manager update ammo text
+        public static event Action OnCurrentAmmoChanged; //UI Manager update ammo text
+        public static event Action<GunType> OnCurrentGun; 
+        public static event Action<GunType, bool> OnHaveAmmo; //UI Manager update ammo text
         public static event Action OnShootAnimation; //play the shoot animation
-        //public static event Action OnGetDamageAmount;
 
         public GunType gunType; //the type of the gun
-
-        //[SerializeField] string gunName = "Gun";
 
         //[SerializeField] AudioSource audioSource;
         //[Space]
@@ -54,6 +50,8 @@ namespace weapon
         //Bools
         public override bool canShoot { get; set; }
         public override bool isReloading { get; set; }
+        public bool[] haveGun22 = new bool[Enum.GetValues(typeof(GunType)).Length]; //Collect all the guns
+        private bool isSelected; //Add a bool variable that tells if this gun is selected
 
         float timeSinceLastShot;
 
@@ -111,7 +109,6 @@ namespace weapon
             OnCurrentGun?.Invoke(gunType); // Invoke the event to set the current gun, update ammo text when switching guns
 
             Item.OnHaveThisGun += HaveThisGun;
-
             Settings.OnDisableGun += DisableGun;
             Settings.OnEnableGun += EnableGun;
         }
@@ -132,9 +129,6 @@ namespace weapon
             }
         }
    
-        //Collect all the guns
-        public bool[] haveGun22 = new bool[Enum.GetValues(typeof(GunType)).Length];
-
         private void HaveThisGun(bool haveGun, GunType gunType)
         {       
             //Set the correct boolean value to the correct index
@@ -144,15 +138,6 @@ namespace weapon
             //Check if any gun is collected, if not, call OnGetGun
             bool anyGunCollected = Array.Exists(haveGun22, gun => gun);
             OnGetGun?.Invoke(anyGunCollected);
-        }
-
-        //Add a bool variable that tells if this gun is selected
-        private bool isSelected;
-
-        //Method sets this gun as selected
-        public void SetSelected(bool selected)
-        {
-            isSelected = selected;
         }
 
         private void Update()
@@ -177,6 +162,12 @@ namespace weapon
             if (Input.GetKeyDown(shootKey) || (Input.GetKey(shootKey))) Shoot();
         }
 
+        //Method sets this gun as selected
+        public void SetSelected(bool selected)
+        {
+            isSelected = selected;
+        }
+
         private void FixedUpdate()
         {
             timeSinceLastShot += Time.deltaTime;      
@@ -197,7 +188,7 @@ namespace weapon
             {
                 //gunData.shoot.Play(audioSource);
                 AudioManager.Instance.PlayCorrectSound(audioEvent: gunData.shoot);
-                OnShootAnimation?.Invoke();
+                OnShootAnimation?.Invoke(); //play the shoot animation
 
                 for (int i = 0; i < gunData.bulletsPerShot; i++)
                 {
