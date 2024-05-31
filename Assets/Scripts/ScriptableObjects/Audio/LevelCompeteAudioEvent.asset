@@ -17,4 +17,4 @@ MonoBehaviour:
   Volume: 1
   RandomizeVolume: 0
   Pitch: 1
-  RandomizePitch: 0.3
+  RandomizePitch: 0.1

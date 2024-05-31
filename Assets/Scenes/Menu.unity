@@ -1855,12 +1855,12 @@ PrefabInstance:
     - target: {fileID: 4720949466926107256, guid: 78d81ec593983404da66ae1407ab1662,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855615373023791662, guid: 78d81ec593983404da66ae1407ab1662,
         type: 3}
       propertyPath: m_text
-      value: "Level 6: \nTomp Shrine"
+      value: "Level 6: \nTomb Chamber"
       objectReference: {fileID: 0}
     - target: {fileID: 4911831424967767633, guid: 78d81ec593983404da66ae1407ab1662,
         type: 3}

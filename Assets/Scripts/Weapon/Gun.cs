@@ -30,9 +30,6 @@ namespace weapon
 
         public GunType gunType; //the type of the gun
 
-        //[SerializeField] AudioSource audioSource;
-        //[Space]
-
         [Header("Gun Data and features")]
         public GunData gunData;
 
@@ -51,7 +48,10 @@ namespace weapon
         public override bool canShoot { get; set; }
         public override bool isReloading { get; set; }
         public bool[] haveGun22 = new bool[Enum.GetValues(typeof(GunType)).Length]; //Collect all the guns
-        private bool isSelected; //Add a bool variable that tells if this gun is selected
+        bool isSelected; //Add a bool variable that tells if this gun is selected
+
+        //bool isGunEnabled = true;
+
 
         float timeSinceLastShot;
 
@@ -90,6 +90,11 @@ namespace weapon
 
         private void Awake()
         {
+            gunComponent = GetComponent<Gun>();
+
+            Settings.Instance.OnDisableGun2 += DisableGun; //disable the gun, this needed  when gun script is disabled
+            Settings.Instance.OnEnableGun += EnableGun; //enable the gun, this needed  when gun script is enabled
+
             gunType = GetGunType();
             //audioSource = GetComponent<AudioSource>();
             currentAmmo = gunData.magazineSize; //the amount of bullets in the magazine  
@@ -102,33 +107,46 @@ namespace weapon
 
         private void OnEnable()
         {
+            Settings.Instance.OnDisableGun2 += DisableGun;
+            Settings.Instance.OnEnableGun += EnableGun;
+
             if (allAmmo <= gunData.magazineSize)
             {
                 currentAmmo = allAmmo;
             }
             OnCurrentGun?.Invoke(gunType); // Invoke the event to set the current gun, update ammo text when switching guns
 
-            Item.OnHaveThisGun += HaveThisGun;
-            Settings.OnDisableGun += DisableGun;
-            Settings.OnEnableGun += EnableGun;
+            Item.OnHaveThisGun += HaveThisGun;          
         }
 
-        public void DisableGun()
+        public void DisableGun() //disable the gun, settings panel active it
         {
-            if(gunComponent != null)
+           // Debug.Log("Attempting to disable gun");
+            if (gunComponent != null)
             {
                 gunComponent.enabled = false;
+               // Debug.Log("Gun is disabled");
+            }
+            else
+            {
+                Debug.LogWarning("Gun component is not initialized");
             }
         }
 
-        public void EnableGun()
+        public void EnableGun() //enable the gun, settings panel active it
         {
+           // Debug.Log("Attempting to enable gun");
             if (gunComponent != null)
             {
                 gunComponent.enabled = true;
+               // Debug.Log("Gun is enabled");
+            }
+            else
+            {
+                Debug.LogWarning("Gun component is not initialized");
             }
         }
-   
+
         private void HaveThisGun(bool haveGun, GunType gunType)
         {       
             //Set the correct boolean value to the correct index
@@ -144,7 +162,7 @@ namespace weapon
         {
             ShootInput();
             ReloadInput();
-
+          
             // Call the HaveThisGun method only if this gun is selected
             if (isSelected)
             {
@@ -184,7 +202,7 @@ namespace weapon
         {
             if (currentAmmo <= 0 || allAmmo <= 0) return;
             
-            if(CanShoot())
+            if(CanShoot()) // If the gun is not reloading and the time since the last shot is greater than the fire rate
             {
                 //gunData.shoot.Play(audioSource);
                 AudioManager.Instance.PlayCorrectSound(audioEvent: gunData.shoot);
@@ -265,8 +283,9 @@ namespace weapon
 
         private void OnDisable()
         {
-            //PlayerShoot.Instance.OnReloadInput -= StartReload;
-            //PlayerShoot.Instance.OnShootInput -= Shoot;
+            Settings.Instance.OnDisableGun2 -= DisableGun;
+            Settings.Instance.OnEnableGun -= EnableGun;
+
             isReloading = false;
         }
     }

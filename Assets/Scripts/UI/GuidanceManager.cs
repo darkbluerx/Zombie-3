@@ -15,8 +15,8 @@ public class GuidanceManager : MonoBehaviour
     [Header("Drag the GuidangeText object here, GameUI/SEtting & Guindange/Panel/GuidangeText")]
     public TMP_Text guidangeText;
 
-    [Header("Drag the closeTextWindow/button object here")]
-    [SerializeField] UnityEngine.UI.Button closeTextButton;
+    //[Header("Drag the closeTextWindow/button object here")]
+    //[SerializeField] UnityEngine.UI.Button closeTextButton;
 
     [Header("Drag the TextCanvas object here (Story text)")]
     [SerializeField] GameObject TextCanvas;
@@ -43,19 +43,24 @@ public class GuidanceManager : MonoBehaviour
         ShowGuindanceText(); //shows the guidance text when the collider is hit
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        OnLevelComplete += ShowEndText; //shows the end text when the collider is hit
-        closeTextButton.onClick.AddListener(CloseTextCanvasIfAnyKeyPressed);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CloseTextCanvas();
+        }
     }
 
-    private void CloseTextCanvasIfAnyKeyPressed()
+    private void OnEnable()
     {
-        if (Input.anyKey) // Close the window if any key is pressed
-        {
-            Time.timeScale = 1f; // Resume the game
-            CloseWindow();
-        }
+        OnLevelComplete += ShowEndText; //shows the end text when the player collides with the endGameCollider
+        //closeTextButton.onClick.AddListener(CloseTextCanvasIfAnyKeyPressed); // Close the window if pressed button and space (old system)
+    }
+
+    private void CloseTextCanvas() // Close the window if any key is pressed
+    {     
+        Time.timeScale = 1f; // Resume the game
+        CloseWindow();
     }
 
     public void ShowGuindanceText()
@@ -67,7 +72,7 @@ public class GuidanceManager : MonoBehaviour
         {
             if (MainStory[i].level == levelNumber)
             {
-                guidangeText.text = MainStory[i].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
+                guidangeText.text = MainStory[i].guindanceText + "\n \n Close the Text window by pressing Space Button.";
                 return;
             }
         }
@@ -100,7 +105,7 @@ public class GuidanceManager : MonoBehaviour
         {
             if (EndStory[x].level == levelNumber)
             {
-                guidangeText.text = EndStory[x].guindanceText + "\n \n Close the Text window by pressing Left Mouse and Space button.";
+                guidangeText.text = EndStory[x].guindanceText + "\n \n Close the Text window by pressing Space Button.";
                 return;
             }
         }
@@ -115,7 +120,7 @@ public class GuidanceManager : MonoBehaviour
     private void CloseWindow()
     {
         guidangeText.text = "";
-        closeTextButton.onClick.RemoveListener(CloseWindow);
+        //closeTextButton.onClick.RemoveListener(CloseWindow);
         TextCanvas.SetActive(false);
     }
 
@@ -134,6 +139,6 @@ public class GuidanceManager : MonoBehaviour
 
     private void OnDisable()
     {
-        OnLevelComplete -= ShowEndText;
+        OnLevelComplete -= ShowEndText; // Unsubscribe from the event to show the end text
     }
 }

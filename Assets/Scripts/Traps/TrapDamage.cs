@@ -11,9 +11,16 @@ namespace audio
         Saw
     }
 
+    [RequireComponent(typeof(AudioSource))]
     public class DamageTrap : MonoBehaviour
     {
         public event Action OnCallAudioEvent;
+
+        [Header("Trap AudioEvents")]
+        public AudioEvent[] trapAudioEvents;
+        [Space]
+
+        [SerializeField] AudioSource trapSfxAudioSource;
 
         [SerializeField] Collider[] colliders;
 
@@ -23,6 +30,11 @@ namespace audio
         [Header("Select a tarp type, play the sound accordingly")]
         public TrapType trapType;
 
+        private void Awake()
+        {
+            trapSfxAudioSource = GetComponent<AudioSource>();
+        }
+
         private void OnEnable()
         {
             OnCallAudioEvent += CallSound;
@@ -31,7 +43,6 @@ namespace audio
         private void OnTriggerEnter(Collider collision)
         {
             OnCallAudioEvent?.Invoke();
-            //Invoke("OnDisable", 0.1f);
 
             //Check if the trap hit a game object that has a Health component
             Health health = collision.gameObject.GetComponent<Health>();
@@ -43,9 +54,35 @@ namespace audio
             }
         }
 
+        private void PlaySound(TrapType trapType) //Play the sound related to the trapType
+        {
+            trapAudioEvents[(int)trapType].Play(trapSfxAudioSource);
+        }
+
         private void CallSound()
         {
-            AudioManager.Instance.GetSound(trapType);
+            GetSound(trapType);
+        }
+
+        private void GetSound(TrapType trapType) // Choose the sound based on the trapType
+        {
+            switch (trapType)
+            {
+                case TrapType.Axe:
+                    PlaySound(trapType);
+                    break;
+                case TrapType.Spike:
+                    PlaySound(trapType);
+                    break;
+                case TrapType.Cutter:
+                    PlaySound(trapType);
+                    break;
+                case TrapType.Saw:
+                    PlaySound(trapType);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void ActivateTrap()

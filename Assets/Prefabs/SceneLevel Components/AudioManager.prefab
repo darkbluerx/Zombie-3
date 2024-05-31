@@ -59,7 +59,6 @@ MonoBehaviour:
     type: 2}
   buttonTrapAudioEvent: {fileID: 11400000, guid: 43a1eb526032a2f48a692b456afceea4,
     type: 2}
-  levelComplete: {fileID: 11400000, guid: 42214636ad25f8b4fb2e13880e191a95, type: 2}
-  gameOver: {fileID: 11400000, guid: 945ea746882cc1447bfcee73368389c6, type: 2}
-  backgroundAudioEvent: {fileID: 11400000, guid: 02dcdba2d5ba49645ad11991d2aaf3be,
+  levelCompleteAudioEvent: {fileID: 11400000, guid: 42214636ad25f8b4fb2e13880e191a95,
     type: 2}
+  gameOverAudioEvent: {fileID: 11400000, guid: 945ea746882cc1447bfcee73368389c6, type: 2}

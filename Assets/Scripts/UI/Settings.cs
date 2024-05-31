@@ -3,15 +3,14 @@ using System;
 
 public class Settings : MonoBehaviour
 {
-    public static Action OnDisableGun; //disable the gun
-    public static Action OnEnableGun; //enable the gun
-    public static Settings Instance { get; private set; }
+    public event Action OnDisableGun2; //disable the gun
+    public event Action OnEnableGun; //enable the gun
+    public static Settings Instance { get; private set; } //Singleton
 
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject closeGuidanceTextButton;
 
     public static event Action OnOpenSettingsPanel;
-
 
     private void Awake()
     {
@@ -28,7 +27,8 @@ public class Settings : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            OnDisableGun?.Invoke(); //disable the Gun scipt, call method DisableGun -> Gun.cs
+            OnDisableGun2?.Invoke(); //disable the Gun scipt, call method DisableGun -> Gun.cs
+
             OnOpenSettingsPanel?.Invoke();
         }
     }
@@ -51,9 +51,14 @@ public class Settings : MonoBehaviour
 
     public void CloseSettingsPanel()
     {
-        Cursor.visible = false;
-        OnEnableGun?.Invoke(); //enable the Gun scipt, call method EnableGun -> Gun.cs
+        Cursor.visible = false;       
         closeGuidanceTextButton.SetActive(true);
         Time.timeScale = 1; // Resume the game
+        OnEnableGun?.Invoke(); //enable the Gun scipt, call method EnableGun -> Gun.cs
+    }
+
+    public void CallOnDisableGun2()
+    {
+        OnDisableGun2?.Invoke();
     }
 }

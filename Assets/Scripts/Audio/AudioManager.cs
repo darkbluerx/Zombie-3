@@ -35,8 +35,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioEvent buttonTrapAudioEvent;
 
     [Header("Level Audios")]
-    public AudioEvent levelComplete;
-    public AudioEvent gameOver;
+    public AudioEvent levelCompleteAudioEvent;
+    public AudioEvent gameOverAudioEvent;
     //public AudioEvent backgroundAudioEvent;
 
     private void Awake()
@@ -102,11 +102,6 @@ public class AudioManager : MonoBehaviour
         return sfxAudioSource.volume; // Get the volume of the music             
     }
 
-    public void StopBackgroundMusic()
-    {
-        musicAudioSource.Stop(); // Stop background music
-    }
-
     public void GetTrapAudioEvent() // Play trap button sound
     {
         if(buttonTrapAudioEvent != null)
@@ -147,30 +142,14 @@ public class AudioManager : MonoBehaviour
         isEnemyHitAudioPlaying = false;
     }
 
-    public void GetSound(TrapType trapType) // Choose the sound based on the trapType
+    public void StopBackgroundMusic()
     {
-        switch (trapType)
-        {
-            case TrapType.Axe:
-                PlaySound(trapType);
-                break;
-            case TrapType.Spike:
-                PlaySound(trapType);
-                break;
-            case TrapType.Cutter:
-                PlaySound(trapType);
-                break;
-            case TrapType.Saw:
-                PlaySound(trapType);
-                break;
-            default:
-                break;
-        }     
+        musicAudioSource.Stop(); // Stop background music
     }
 
-    public void PlaySound(TrapType trapType) //Play the sound related to the trapType
+    public void PlayBackGroundMusic(AudioEvent audioEvent)
     {
-        trapAudioEvents[(int)trapType].Play(sfxAudioSource); 
+        audioEvent.Play(musicAudioSource); // Play background music
     }
 
     public void PlayCorrectSound(AudioEvent audioEvent) //you can call this method from anywhere and pass the audioEvent you want to play

@@ -11,24 +11,10 @@ public class FinishPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //UnlockNewLevel();
-            //StartCoroutine(LevelComplete());
             LevelComplete();
             OnLevelComplete?.Invoke(); // Invoke the event what shows the next level button -> MapSelection.cs
         }
     }
-
-    //private IEnumerator LevelComplete()
-    //{
-    //    AudioManager.Instance.StopBackgroundMusic(); ; // Stop background music
-    //    yield return new WaitForSecondsRealtime(1f); // Wait for 1 second
-    //    Time.timeScale = 0f;
-    //    Cursor.visible = true;
-
-    //    AudioManager.Instance.PlayCorrectSound(audioEvent: AudioManager.Instance.levelComplete);
-    //    yield return new WaitForSecondsRealtime(2f);
-    //    SceneManager.LoadScene(0); // Load the level choose scene
-    //}
 
     private void LevelComplete()
     {

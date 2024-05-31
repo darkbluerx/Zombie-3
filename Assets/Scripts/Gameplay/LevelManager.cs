@@ -44,7 +44,7 @@ public class LevelManager: MonoBehaviour
         Time.timeScale = 0f; // Stop the game
 
         yield return new WaitForSecondsRealtime(2f); // wait for seconds
-        AudioManager.Instance.PlayCorrectSound(audioEvent: AudioManager.Instance.gameOver);
+        AudioManager.Instance.PlayBackGroundMusic(audioEvent: AudioManager.Instance.gameOverAudioEvent); // Play game over music
     }
 
     public void QuitGame()
@@ -55,16 +55,19 @@ public class LevelManager: MonoBehaviour
     public void GameCompleted()
     {
         levelCompleteCanvas.SetActive(true);
+        Settings.Instance.CallOnDisableGun2(); // Disable the gun
         Cursor.visible = true; // Show the cursor
         StartCoroutine(LoadNextLevel());
     }
 
     private IEnumerator LoadNextLevel()
     {
+       
+
         AudioManager.Instance.StopBackgroundMusic(); // Stop background music
         Time.timeScale = 0f; // Stop the game
 
-        yield return new WaitForSecondsRealtime(2f); // wait for seconds
-        AudioManager.Instance.PlayCorrectSound(audioEvent: AudioManager.Instance.levelComplete);
+        yield return new WaitForSecondsRealtime(1f); // wait for seconds
+        AudioManager.Instance.PlayBackGroundMusic(audioEvent: AudioManager.Instance.levelCompleteAudioEvent); // Play level complete music
     }
 }
