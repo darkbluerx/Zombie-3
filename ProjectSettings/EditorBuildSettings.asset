@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 1110378a968ebe04abfe8d90ecdc02b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 1 Warehouse.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Level 2 Gareage.unity
     guid: 60a7aa5aa3fa165488ed1f952344d504
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 3 Museum.unity
     guid: 5d622e909690b6b4c83e64ccd2e8ed82
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 4 Ruined Castle.unity
     guid: 26dceb35c8bab9247963f563b8cf6144
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 5 Mafia House.unity
     guid: fd22dd421e882a94da779db6627e8558
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 6 Tomp Shire.unity
     guid: 53844867c7321b948b9f0e52b2cb09ce
   m_configObjects: {}
