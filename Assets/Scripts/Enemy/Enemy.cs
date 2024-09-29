@@ -5,27 +5,34 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
-    //Events
+    // Events
     public event Action OnAttack; // play attack animation -> ZombieAnimations.cs
-    public static event Action OnCountZombieKillEvent; //count zombie kill -> GameInformationWiever.cs
-    public event Action OnTakingDamage; //play take damage animation -> ZombieAnimations.cs
+    public static event Action OnCountZombieKillEvent; // count zombie kill -> GameInformationWiever.cs
+    public event Action OnTakingDamage; // play take damage animation -> ZombieAnimations.cs
 
     AIDestinationSetter destinationSetter; // A* Pathfinding Project
     public Health enemyHealth;
     [Space]
 
-    [Header("Drag, audios -20 db in mixer")]
-    [SerializeField] AudioSource sfxAudioSource; //play shout sound
-    [Header("Drag, audios -30 db in mixer")] //play death sound
-    [SerializeField] AudioSource sfxEnemyAudioSource;
+    [Header("Drag the first AudioSource here")]
+    [Tooltip ("Using SFX mixer -15 dB")]
+    [SerializeField] AudioSource SFXAudioSource_Quiter; // play shout sound
+    [Space]
+
+    [Header("Drag the second AudioSource here")]
+    [Tooltip("Using Enemies mixer -13 dB")]
+    [SerializeField] AudioSource SFXAudioSource; // play death sound
 
     [Header("Stats"), Tooltip("Drag Enemy Stats scriptable object here")]
-    [SerializeField] UnitsStatsSO unitsStats;
+    [SerializeField] UnitsStatsSO enemyStats; // enemy stats scriptable object
     [Space]
 
     [Header("Enemy Settings")]
-    [SerializeField] int damage = 100; // enemy damage
-    [SerializeField] int timeInterval = 10; // how often enemy deals damage
+    [Tooltip("Enemy damage")]
+    [SerializeField] int damage = 100;
+
+    [Tooltip("How often enemy deals damage")]
+    [SerializeField] int timeInterval = 10;
     [Space]
 
     [Header("Enemy Colliders")]
@@ -35,8 +42,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemyHealth = GetComponent<Health>();
-        //sfxAudioSource = GetComponent<AudioSource>();
-        //sfxEnemyAudioSource = GetComponent<AudioSource>();
         characterController = GetComponent<Collider>();
         destinationSetter = GetComponent<AIDestinationSetter>();
 
@@ -46,7 +51,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void OnEnable() // Subscribe to events
     {
         if(enemyHealth != null)
         {
@@ -63,9 +68,8 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
-        //Debug.Log("Enemy is dead!");
-        unitsStats.deathAudioEvent.Play(sfxEnemyAudioSource); // play death sound
-        //AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.deathAudioEvent);
+        enemyStats.deathAudioEvent.Play(SFXAudioSource); // play death sound
+
         StopCoroutine(ShoutOverTime());
         
         destinationSetter.enabled = false; // disable zombie movement
@@ -80,7 +84,6 @@ public class Enemy : MonoBehaviour
 
     private void PainResponse(int damage)
     {
-        //Debug.Log("Zombie take dmg!");
         OnTakingDamage?.Invoke(); // play take damage animation -> ZombieAnimations.cs
         AudioManager.Instance.PlayEnemyTakeDamage(); // play take damage sound
     }
@@ -97,8 +100,7 @@ public class Enemy : MonoBehaviour
             int randomTime = UnityEngine.Random.Range(7, timeInterval);
 
             yield return new WaitForSeconds(timeInterval);
-            unitsStats.shoutAudioEvent.Play(sfxAudioSource);
-            //AudioManager.Instance.PlayCorrectSound(audioEvent: unitsStats.shoutAudioEvent);
+            enemyStats.shoutAudioEvent.Play(SFXAudioSource_Quiter); // play shout sound
         }
     }
 
@@ -111,18 +113,16 @@ public class Enemy : MonoBehaviour
 
             if (health != null)
             {
-                OnAttack?.Invoke(); // play attack animatin -> ZombieAnimations.cs
+                OnAttack?.Invoke(); // play attack animation -> ZombieAnimations.cs
 
                 // Call the TakeDamage method and pass the damage amount
                 int remainingHealth = health.TakeDamage(damage);
-                //Debug.Log($"{collision.gameObject.name} take damage: {damage}. Jäljellä oleva terveys: {remainingHealth}");
             }
         } 
     }
 
-    private void OnDisable()
+    private void OnDisable() // Unsubscribe from events
     {
         enemyHealth.OnDeadEvent -= Dead;
-        //enemyHealth.OnTakeDamage -= PainResponse;       
     }
 }

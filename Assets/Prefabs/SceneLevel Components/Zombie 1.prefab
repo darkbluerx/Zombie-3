@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1609582119231659847}
-  sfxAudioSource: {fileID: 5292153457377379310}
-  sfxEnemyAudioSource: {fileID: 2040646454044641509}
-  unitsStats: {fileID: 11400000, guid: 8d0fbc6334f371b4e8d6905b467f3af5, type: 2}
+  SFXAudioSource_Quiter: {fileID: 5292153457377379310}
+  SFXAudioSource: {fileID: 2040646454044641509}
+  enemyStats: {fileID: 11400000, guid: 8d0fbc6334f371b4e8d6905b467f3af5, type: 2}
   damage: 100
   timeInterval: 12
   triggerCollider: {fileID: 4111522300787924307}

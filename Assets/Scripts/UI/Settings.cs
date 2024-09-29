@@ -3,9 +3,9 @@ using System;
 
 public class Settings : MonoBehaviour
 {
-    public event Action OnDisableGun2; //disable the gun
-    public event Action OnEnableGun; //enable the gun
-    public static Settings Instance { get; private set; } //Singleton
+    public event Action OnDisableGun2; // disable the gun
+    public event Action OnEnableGun; // enable the gun
+    public static Settings Instance { get; private set; } // Singleton
 
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject closeGuidanceTextButton;
@@ -14,7 +14,7 @@ public class Settings : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null) // Singleton
         {
             Destroy(gameObject);
             Debug.LogError("There can only be one Settings" + transform + " " + Instance);
