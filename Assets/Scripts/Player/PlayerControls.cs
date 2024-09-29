@@ -6,7 +6,7 @@ public class PlayerControls : MonoBehaviour
     public static PlayerControls Instance { get; private set; } //Singleton
 
     //change player health
-    [SerializeField] UnitsStats unitsStats;
+    [SerializeField] UnitsStatsSO unitsStats;
 
     [SerializeField] float health;
 
@@ -26,7 +26,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Awake()
     {
-        unitsStats = Resources.Load<UnitsStats>("ScriptableObjects/Player/UnitsStats");
+        unitsStats = Resources.Load<UnitsStatsSO>("ScriptableObjects/Player/UnitsStats");
        
         if(Instance != null)
         {

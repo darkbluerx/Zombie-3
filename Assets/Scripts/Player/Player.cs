@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [Space]
 
     [Header("Player Stats, needed")]
-    [SerializeField] UnitsStats unitsStats;
+    [SerializeField] UnitsStatsSO unitsStats;
 
     private void Awake()
     {

@@ -25,7 +25,7 @@ public class Settings : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             OnDisableGun2?.Invoke(); //disable the Gun scipt, call method DisableGun -> Gun.cs
 

@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioSource sfxEnemyAudioSource;
 
     [Header("Stats"), Tooltip("Drag Enemy Stats scriptable object here")]
-    [SerializeField] UnitsStats unitsStats;
+    [SerializeField] UnitsStatsSO unitsStats;
     [Space]
 
     [Header("Enemy Settings")]

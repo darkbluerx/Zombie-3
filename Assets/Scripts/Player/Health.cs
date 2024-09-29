@@ -9,7 +9,7 @@ public class Health : MonoBehaviour, IDamageable
     public event Action OnEat; //play eat animation -> ZombieAnimations.cs
 
     [Header("Drag unit stats")]
-    [SerializeField] UnitsStats unitsStats;
+    [SerializeField] UnitsStatsSO unitsStats;
 
     public int MaxHealth { get; private set; }
     public int CurrentHealth { get; private set; }
