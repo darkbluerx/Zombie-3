@@ -19,8 +19,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelSelectionMenu.OnShowMapSelectionCanvas += ShowCanvas;
-        //Debug.Log("Canvas eventtiä kutsuttu");
+        LevelSelectionMenu.OnShowMapSelectionCanvas += ShowCanvas; // Event to show the map selection canvas
     }
 
     private void ShowCanvas()

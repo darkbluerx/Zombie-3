@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d4e9525cd564964da6d1ea7f69027b8, type: 3}
-  m_Name: hitZombieAudioevent
+  m_Name: ZombieShoutsAudioEvent
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 20fcdb90231e1b24b91b7d162fc7a454, type: 3}
-  - {fileID: 8300000, guid: fd7320931f093dd4bafa8b39981e6219, type: 3}
+  - {fileID: 8300000, guid: 5c43147ec41c4964381691bf9d365189, type: 3}
+  - {fileID: 8300000, guid: 3bd3980cfc6fdd946a8c75395a7ab681, type: 3}
   Volume: 1
   RandomizeVolume: 0
   Pitch: 1

@@ -53,10 +53,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da648b87792fc5c44a2b03b238a5b5ce, type: 2}
   - {fileID: 11400000, guid: 389a1f97dc9615344b2abb2699855767, type: 2}
   - {fileID: 11400000, guid: 43a1eb526032a2f48a692b456afceea4, type: 2}
-  playerHitAudioEvents: {fileID: 11400000, guid: 2788b6c82c03e544485a8228662a3f4f,
+  playerHitAudioEvent: {fileID: 11400000, guid: 2788b6c82c03e544485a8228662a3f4f,
     type: 2}
-  enemyHitAudioEvents: {fileID: 11400000, guid: 48388156605d28d4cb370ebe6945a2f4,
-    type: 2}
+  enemyHitAudioEvent: {fileID: 11400000, guid: db0f4added6b45741917cdd4b22a9c60, type: 2}
   buttonTrapAudioEvent: {fileID: 11400000, guid: 43a1eb526032a2f48a692b456afceea4,
     type: 2}
   levelCompleteAudioEvent: {fileID: 11400000, guid: 42214636ad25f8b4fb2e13880e191a95,

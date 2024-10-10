@@ -3,12 +3,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
+//This is where the transition to levels is controlled
 public class LevelSelectionMenu : MonoBehaviour
 {
     public static event Action OnShowMapSelectionCanvas; // Event to show the map selection canvas
 
-    [SerializeField] UnityEngine.UI.Button[] levelButtons; // Nappulat
-    [SerializeField] GameObject buttonsParent;
+    [Header("Set the button parent")]
+    [Tooltip("If button parent is assigned in the inspector, level buttons are assigned automatically")]
+    [SerializeField] GameObject buttonsParent; // Parent object of the buttons
+    [SerializeField] UnityEngine.UI.Button[] levelButtons; // Level start buttons
     [SerializeField] List<GameObject> levelPictures; // List of level pictures
 
     int currentLevel;
@@ -32,7 +35,7 @@ public class LevelSelectionMenu : MonoBehaviour
 
     private void Start()
     {
-        FinishPoint.OnLevelComplete += UnlockNextLevel;
+        FinishPoint.OnLevelComplete += UnlockNextLevel; // Event to unlock the next level
         if (currentLevel > 1) OnShowMapSelectionCanvas?.Invoke(); // Show the map selection canvas if the player has completed at least one level -> MainMenu.cs
 
         //check if levelButtons array is assigned correctly
@@ -84,16 +87,15 @@ public class LevelSelectionMenu : MonoBehaviour
         currentLevel = nextLevel;
         nextLevel = Mathf.Min(nextLevel + 1, levelButtons.Length); // Prevents from going over the number of buttons
 
-        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
-        PlayerPrefs.SetInt("NextLevel", nextLevel);
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel); // Save the current level
+        PlayerPrefs.SetInt("NextLevel", nextLevel); // Save the next level
 
         Start(); // Update the state of the buttons again
     }
 
-    public void ResetPlayerPrefs()
+    public void ResetPlayerPrefs() // Reset the player's progress, intended for testing purposes
     {
         PlayerPrefs.DeleteAll();
-        //Debug.Log("PlayerPrefs nollattu.");
     }
 
     private void ShowLevelPicture(int activeLevelIndex)

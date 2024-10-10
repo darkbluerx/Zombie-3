@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d4e9525cd564964da6d1ea7f69027b8, type: 3}
-  m_Name: deadPlayerAudioevent
+  m_Name: ZombieDeadAudioEvent
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 8d6f7db1524715447bde05b3349a9a04, type: 3}
-  Volume: 1
+  - {fileID: 8300000, guid: 9eb633e59decb624bbf948469cc45e58, type: 3}
+  Volume: 0.2
   RandomizeVolume: 0
   Pitch: 1
-  RandomizePitch: 1
+  RandomizePitch: 0.6

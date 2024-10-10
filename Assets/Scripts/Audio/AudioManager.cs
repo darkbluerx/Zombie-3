@@ -1,43 +1,39 @@
-using audio;
 using System.Collections;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
 
+//Control the playback of sounds such as music, sfx, game, trap and enemy sounds
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; } //Singleton
-
-    //public event Action OnPlayBackgroundMusicEvent;
 
     public Slider musicVolumeSlider; // Slider for music volume
     public Slider sfxVolumeSlider; // Slider for sound volume
 
     [Header("Automatically assign audio sources")]
-    [SerializeField] AudioSource sfxAudioSource;   
+    [SerializeField] AudioSource sfxAudioSource;
     [SerializeField] AudioSource musicAudioSource;
 
-    [Header("Traps")]
+    [Header("Trap audios")]
     public AudioEvent[] trapAudioEvents;
     [Space]
 
-    [Header("Player")]
-    public AudioEvent playerHitAudioEvents;
-    bool isPlayerHitAudioPlaying = false;
+    [Header("Player audios")]
+    public AudioEvent playerHitAudioEvent;
+    bool isPlayingPlayerHitAudio = false;
     [Space]
 
-    [Header("Enemy")]
-    public AudioEvent enemyHitAudioEvents;
-    bool isEnemyHitAudioPlaying = false;
+    [Header("Enemy audios")]
+    public AudioEvent enemyHitAudioEvent;
+    bool isPlayingEnemyHitAudio = false;
     [Space]
 
-    [Header("Trap Buttons")]
+    [Header("Trap Button audios")]
     [SerializeField] AudioEvent buttonTrapAudioEvent;
 
-    [Header("Level Audios")]
+    [Header("Level audios")]
     public AudioEvent levelCompleteAudioEvent;
     public AudioEvent gameOverAudioEvent;
-    //public AudioEvent backgroundAudioEvent;
 
     private void Awake()
     {
@@ -49,14 +45,12 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
 
-        musicAudioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>(); // Find the background music audio source
-        sfxAudioSource = GameObject.Find("SFXMusic").GetComponent<AudioSource>(); // Find the background music audio source
+        musicAudioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>(); // Find autiomatically the background music audio source
+        sfxAudioSource = GameObject.Find("SFXMusic").GetComponent<AudioSource>(); // Find autiomatically the sfx audio source
     }
 
     private void Start()
     {
-        //OnPlayBackgroundMusicEvent?.Invoke(); // Play background music
-
         if (PlayerPrefs.HasKey("MusicVolume")) // If the player has set the volume before
         {
             float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume"); // Get the saved volume
@@ -99,7 +93,7 @@ public class AudioManager : MonoBehaviour
 
     public float GetSFXVolume() // Get the volume of the music
     {
-        return sfxAudioSource.volume; // Get the volume of the music             
+        return sfxAudioSource.volume; // Get the volume of the music
     }
 
     public void GetTrapAudioEvent() // Play trap button sound
@@ -112,34 +106,34 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPlayerTakeDamage()
     {
-        if (playerHitAudioEvents != null && !isPlayerHitAudioPlaying)
+        if (playerHitAudioEvent != null && !isPlayingPlayerHitAudio)
         {
-            playerHitAudioEvents.Play(sfxAudioSource);
-            isPlayerHitAudioPlaying = true;
-            StartCoroutine(ResetPlayerHitAudioFlag()); // play the sound once
+            playerHitAudioEvent.Play(sfxAudioSource);
+            isPlayingPlayerHitAudio = true;
+            StartCoroutine(ResetPlayerHitAudioFlag()); // Play the sound once
         }
     }
 
     public void PlayEnemyTakeDamage()
     {
-        if (enemyHitAudioEvents != null && !isEnemyHitAudioPlaying)
+        if (enemyHitAudioEvent != null && !isPlayingEnemyHitAudio)
         {
-            enemyHitAudioEvents.Play(sfxAudioSource);
-            isEnemyHitAudioPlaying = true;
-            StartCoroutine(ResetEnemyHitAudioFlag()); // play the sound once
+            enemyHitAudioEvent.Play(sfxAudioSource);
+            isPlayingEnemyHitAudio = true;
+            StartCoroutine(ResetEnemyHitAudioFlag()); // Play the sound once
         }
     }
     
-    private IEnumerator ResetPlayerHitAudioFlag() // play the sound once
+    private IEnumerator ResetPlayerHitAudioFlag() // Play the sound once
     {
-        yield return new WaitForSeconds(playerHitAudioEvents.audioClips.Length);
-        isPlayerHitAudioPlaying = false;
+        yield return new WaitForSeconds(playerHitAudioEvent.audioClips.Length);
+        isPlayingPlayerHitAudio = false;
     }
 
-    private IEnumerator ResetEnemyHitAudioFlag() // play the sound once
+    private IEnumerator ResetEnemyHitAudioFlag() // Play the sound once
     {
-        yield return new WaitForSeconds(enemyHitAudioEvents.audioClips.Length);
-        isEnemyHitAudioPlaying = false;
+        yield return new WaitForSeconds(enemyHitAudioEvent.audioClips.Length);
+        isPlayingEnemyHitAudio = false;
     }
 
     public void StopBackgroundMusic()
@@ -152,7 +146,7 @@ public class AudioManager : MonoBehaviour
         audioEvent.Play(musicAudioSource); // Play background music
     }
 
-    public void PlayCorrectSound(AudioEvent audioEvent) //you can call this method from anywhere and pass the audioEvent you want to play
+    public void PlayCorrectSound(AudioEvent audioEvent) //You can call this method from anywhere and pass the audioEvent you want to play
     {
         audioEvent.Play(sfxAudioSource);  //script what calls this method, remember to add audioEvent parameter to it
         //examble: AudioManager.Instance.PlayCorrectSound(audioEvent:openDoorAudioEvent);

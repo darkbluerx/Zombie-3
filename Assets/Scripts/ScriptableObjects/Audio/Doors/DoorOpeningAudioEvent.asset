@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d4e9525cd564964da6d1ea7f69027b8, type: 3}
-  m_Name: shoutZombieAudioevent 2
+  m_Name: DoorOpeningAudioEvent
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 5c43147ec41c4964381691bf9d365189, type: 3}
-  - {fileID: 8300000, guid: 3bd3980cfc6fdd946a8c75395a7ab681, type: 3}
+  - {fileID: 8300000, guid: 777ea82e92be0894ba3fd8181bd20f94, type: 3}
+  - {fileID: 8300000, guid: d7a8e8c47cf02f143adb48a66e31c934, type: 3}
   Volume: 1
   RandomizeVolume: 0
   Pitch: 1
-  RandomizePitch: 1
+  RandomizePitch: 0.21
