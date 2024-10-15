@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9172110401168554332
 Transform:
@@ -103,7 +103,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8475901292461445602
 Transform:
@@ -178,7 +178,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5194793185557705976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 95064e97c377b1d418eed02ef9129117, type: 2}
   m_CullingMode: 0
@@ -203,9 +203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be14ef22df1c9848814112b679be0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openDoorAudioEvent: {fileID: 11400000, guid: 9f2473fa744b5d24591ac03d717ffe4c, type: 2}
-  lockedDoorAudioEvent: {fileID: 11400000, guid: d568382ba739a9b4cbfb2b938a85fd7f,
+  doorOpeningAudioEvent: {fileID: 11400000, guid: 9f2473fa744b5d24591ac03d717ffe4c,
     type: 2}
+  doorLockAudioEvent: {fileID: 11400000, guid: d568382ba739a9b4cbfb2b938a85fd7f, type: 2}
   interactionDistance: 2.5
   animator: {fileID: 4259089304478897743}
   isOpen: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cad73583aff654495e5b9b50db487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: {fileID: 11400000, guid: 8fb4bc8cfff6dce478227708d40ac69c, type: 2}
+  hint: {fileID: 11400000, guid: bb545681f172caa4481a7d9180fed24e, type: 2}
 --- !u!1 &5240021655115518312
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6389835626900362070
 Transform:
@@ -271,7 +271,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3174098620647670643
 Transform:

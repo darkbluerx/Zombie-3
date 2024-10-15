@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectFader : MonoBehaviour
 {
     [Header("Fade settings")]
-
     [Tooltip("Speed at which object fades")] public float fadeSpeed = 10f;
     public float fadeAmount = 0.5f;
 
-    float orginalOpacity;
+    float orginalOpacity; //Original opacity of the object
 
     Material material;
 
@@ -18,23 +14,23 @@ public class ObjectFader : MonoBehaviour
 
     private void Awake()
     {
-        material = GetComponent<Renderer>().material;
+        material = GetComponent<Renderer>().material; //Get the material of the object
     }
 
     private void Start()
     {    
-        orginalOpacity = material.color.a;  
+        orginalOpacity = material.color.a;   //Get the original opacity of the object
     }
 
     private void Update()
     {
         if (DoFade)
         {
-            Fade();
+            Fade(); //Fade the object
         }
         else
         {
-            ResetFade();
+            ResetFade(); //Reset the fade of the object
         }
     }
 

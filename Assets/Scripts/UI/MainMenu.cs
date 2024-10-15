@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public static MainMenu Instance { get; private set; }
+    public static MainMenu Instance { get; private set; } //Singleton
 
     [SerializeField] GameObject mapSelectionCanvas;
 

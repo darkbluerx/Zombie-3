@@ -5,12 +5,12 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class DoorAnimation : MonoBehaviour
 {
-    public event Action OnDoorOpen; // play open door animation
-    public event Action OnDoorClose; // play close door animation
+    public event Action OnDoorOpen; // Play open door animation
+    public event Action OnDoorClose; // Play close door animation
 
     [Header("AudioEvents")]
-    public AudioEvent openDoorAudioEvent; // play open door sound
-    public AudioEvent lockedDoorAudioEvent; // play locked door sound
+    public AudioEvent doorOpeningAudioEvent; // play open door sound
+    public AudioEvent doorLockAudioEvent; // play locked door sound
 
     [Header("How far you can open the door")]
     [SerializeField] float interactionDistance = 2f;
@@ -20,7 +20,7 @@ public class DoorAnimation : MonoBehaviour
     [Space]
 
     [Header("Is the door open or closed at the start")]
-    [SerializeField] bool isOpen;
+    [SerializeField] bool isOpen = false;
 
     [Header("Controls if the door can be opened, On/Off")]
     [SerializeField] bool On = true;
@@ -52,7 +52,7 @@ public class DoorAnimation : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) && IsPlayerNearby())
             {
-                AudioManager.Instance.PlayCorrectSound(audioEvent: lockedDoorAudioEvent); // Play the locked door sound
+                AudioManager.Instance.PlayCorrectSound(audioEvent: doorLockAudioEvent); // Play the locked door sound
             }
         }
     }
@@ -61,14 +61,14 @@ public class DoorAnimation : MonoBehaviour
     {
         if (isOpen)
         {
-            OnDoorClose?.Invoke();
-            AudioManager.Instance.PlayCorrectSound(audioEvent: openDoorAudioEvent); // Play the open door sound
+            OnDoorClose?.Invoke(); // Play the close door animation
+            AudioManager.Instance.PlayCorrectSound(audioEvent: doorOpeningAudioEvent); // Play the open door sound
             isOpen = false;
         }
         else
         {
-            OnDoorOpen?.Invoke();
-            AudioManager.Instance.PlayCorrectSound(audioEvent: openDoorAudioEvent);
+            OnDoorOpen?.Invoke(); // Play the open door animation
+            AudioManager.Instance.PlayCorrectSound(audioEvent: doorOpeningAudioEvent);
             isOpen = true;
         }     
     }
@@ -98,7 +98,7 @@ public class DoorAnimation : MonoBehaviour
         animator.SetBool("isClose", true);
     }
 
-    private void OnDisable()
+    private void OnDisable() // Unsubscribe from events
     {
         OnDoorOpen -= Open;
         OnDoorClose -= Close;

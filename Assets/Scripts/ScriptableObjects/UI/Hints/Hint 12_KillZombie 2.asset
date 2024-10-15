@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f24a74b92452d63409c2da6fe37d6183, type: 3}
-  m_Name: Hint 11_Zombie 2
+  m_Name: Hint 12_KillZombie 2
   m_EditorClassIdentifier: 
   level: 0
-  guindanceText: Kill 40 zombies!
+  guindanceText: Kill 20 zombies!
