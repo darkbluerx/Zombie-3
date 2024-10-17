@@ -1,20 +1,19 @@
-# Project: Zombie-3
-Last Updated: 17.10.2024
-Status: Completed
+# **Project: Zombie-3**
+- Last Updated: 17.10.2024
+- Status: Completed
+- Unity Version: 2022.3.6f1
  
 
-## Patient X: One Survivor
+## **Patient X: One Survivor**
 
 Description: A top-down, 3D world horror-action shooter game.
 
 Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 
-
 ## Table of Contents
 
-
-1. Controls:
+  Controls:
 
 - Pause/Options; P 
 - Moving; A, S, D, W
@@ -24,13 +23,27 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Action; F
 
 
-
-
 ## Applications
 
-- Unity
-- 3D T
-[MGL-3D-Rule-Tiles](https://github.com/michaelsgamelab/MGL-3D-Rule-Tiles/tree/main)
+- [A* Pathfinding Project Pro](https://arongranberg.com/astar/)`AI Path Finding`
+
+- 3D Tilemap
+[MGL-3D-Rule-Tiles](https://github.com/michaelsgamelab/MGL-3D-Rule-Tiles/tree/main) `Building the levels with 3d blocks`
+
+- Unity Package
+- 2d Tilemap Editor
+- Universal RP
+
+## Credits:
+
+- Developed by Antti Sironen & Toni Luukkanen
+- Game Design: Antti Sironen & Toni Luukkanen
+- UI Interface: Antti Sironen
+- Programming: Antti Sironen
+- Level Design & Level Making: Antti Sironen & Toni Luukkanen
+- 3D models & Animations: Toni Luukkanen
+
+<br>
 
 ## Sources
 
@@ -49,28 +62,4 @@ Sounds: Freesound: https://freesound.org/
 Soundtracks https://www.newgrounds.com/
 
 Trap Models
-
 https://www.cgtrader.com/
-
-
-
-
-- 3D tilemap
-
-
-
-## Credits:
-
-Developed by
-
-Antti Sironen
-Toni Luukkanen
-
-
-Programming
-Antti Sironen
-
-Level Design & level making
-
-3D models & Animations
-Toni Luukkanen
