@@ -1,7 +1,9 @@
 using UnityEngine;
 using weapon;
 
-[RequireComponent(typeof(Animator))]
+//The player's animations are controlled here
+
+[RequireComponent(typeof(Animator))] //Require the animator component
 public class PlayerAnimation : MonoBehaviour
 {
     public static PlayerAnimation Instance { get; private set; } //Singleton
@@ -12,21 +14,21 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] TopDownPlayerController playerController;
     [SerializeField] Health health;
 
-    int shootAnimationHash = Animator.StringToHash("isShoot");
+    int shootAnimationHash = Animator.StringToHash("isShoot"); //Take a reference to the animator trigger isShoot
     //increase performance by caching the hash
     int VelocityZHash = Animator.StringToHash("velocityZ"); //Take a reference to the animator float velocityZ
     int VelocityXHash = Animator.StringToHash("velocityX"); //Take a reference to the animator float velocityX
 
-    float velocityZ = 0f;
-    float velocityX = 0f;
+    float velocityZ = 0f; //The speed of the player in the Z axis
+    float velocityX = 0f; //The speed of the player in the X axis
 
-    float acceleration = 2f;
-    float deceleration = 2f;
+    float acceleration = 2f; //The acceleration of the player
+    float deceleration = 2f; //The deceleration of the player
 
-    float maxWalkVelocity = 0.5f;
-    float maxRunVelocity = 2f;
+    float maxWalkVelocity = 0.5f; //The maximum speed of the player when walking
+    float maxRunVelocity = 2f; //The maximum speed of the player when running
 
-    float currentMaxVelocity;
+    float currentMaxVelocity; //The current maximum speed of the player
     bool runPressed;
 
     private void Awake()
@@ -34,7 +36,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         playerController = GetComponent<TopDownPlayerController>();
 
-        if (Instance != null)
+        if (Instance != null) //Singleton
         {
             Debug.LogError("There can only be one PlayerAnimation");
             Destroy(gameObject);
@@ -43,30 +45,24 @@ public class PlayerAnimation : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private void OnEnable() //Subscribe to events
     {
-        //animator.SetBool("gun", true); //set the gun animation to true and it will play right "Gun Blend Tree"
-    }
+        Gun.OnShootAnimation += Gun_ShootAnimation; //Call the ShootAnimation method when the OnShootAnimation event is triggered
 
-    private void OnEnable() //subscribe to events
-    {
-        Gun.OnShootAnimation += ShootAnimation;
+        health.OnDeadEvent += Health_OnDeadEvent;
+       
+        TopDownPlayerController.OnCanWalk += TopDownPlayerController_CanWalk;
 
-        health.OnDeadEvent += Health_OnDeadEvent2;
-        Gun.OnGetGun += HaveGun;
-        TopDownPlayerController.OnCanWalk += CanWalk;
-
-        //WeapongSwitching.OnGetGun += HaveGun;
-
-        WeaponSwitching.OnGetGun += HaveGun;
+        Gun.OnGetGun += Gun_HaveGun;
+        WeaponSwitching.OnGetGun += Gun_HaveGun;
     }
 
     private void FixedUpdate()
     {
-        Inputs();
+        Inputs(); //Handle inputs
     }
 
-    private void CanWalk()
+    private void TopDownPlayerController_CanWalk()
     {
         currentMaxVelocity = maxWalkVelocity;
     }
@@ -88,21 +84,20 @@ public class PlayerAnimation : MonoBehaviour
 
         currentMaxVelocity = runPressed ? maxRunVelocity : maxWalkVelocity;
 
-        if(TopDownPlayerController.Instance.GetCurrentMaxStamina() < 1) //if stamina is less than 1, don't play the run animation
+        if(TopDownPlayerController.Instance.GetCurrentMaxStamina() < 1) //If stamina is less than 1, don't play the run animation
         {
             currentMaxVelocity = maxWalkVelocity;
-            //TopDownPlayerController.Instance.SetCanRun();
         }
 
-        //handle current velocity
+        //Handle current velocity
         ChangeVelocity(forwardPressed, leftPressed, rightPressed, runPressed, backPressed, currentMaxVelocity);
         LockOrResetVelocity(forwardPressed, leftPressed, rightPressed, runPressed, backPressed, currentMaxVelocity);
 
-       if(animator != null) animator.SetFloat(VelocityZHash, velocityZ);
+       if(animator != null) animator.SetFloat(VelocityZHash, velocityZ); //Set the float velocityZ in the animator
        if (animator != null) animator.SetFloat(VelocityXHash, velocityX);
     }
 
-    //handes acceleration and deceleration
+    //Handes acceleration and deceleration
     private void ChangeVelocity(bool forwardPressed, bool leftPressed, bool rightPressed, bool runPressed, bool backPressed, float currentMaxVelocity)
     {
         // Walk forward
@@ -181,46 +176,45 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void HaveGun(bool haveGun)
+    private void Gun_HaveGun(bool Gun_HaveGun)
     {         
-        if (haveGun && (animator != null))
+        if (Gun_HaveGun && (animator != null)) //If the player has a gun, play the gun animation
         {
             animator.SetBool("gun", true);
             animator.SetBool("unarmed", false);
         }
-        if (!haveGun && (animator != null))
+        if (!Gun_HaveGun && (animator != null)) //If the player doesn't have a gun, play the unarmed animation
         {
             animator.SetBool("unarmed", true);
             animator.SetBool("gun", false);
         }
     }
 
-    private void Health_OnDeadEvent2()
-    {
+    private void Health_OnDeadEvent() //When the player dies play the dead animation
+    { 
         if(animator != null)
         {
-            animator.applyRootMotion = true; //stop the player from moving when dead
+            animator.applyRootMotion = true; //Stop the player from moving when dead
             animator.SetTrigger("isDead");
             animator.SetBool("isRunWithGun", false);
             animator.SetBool("isRunWithNothing", false);
         }   
     }
 
-    public void ShootAnimation()
+    public void Gun_ShootAnimation() //When the player shoots, play the shoot animation
     {
-       // int animationSpeed = 1;
-     
-        //animator.speed = 1 * Time.deltaTime;
-
         if (animator != null) animator.SetTrigger(shootAnimationHash);
-       // animator.SetFloat("isShoot2", animationSpeed * Time.deltaTime);
-
-       // animationSpeed = 0;
     }
 
-    private void OnDisable()
+    private void OnDisable() //Unsubscribe from events
     {
-        health.OnDeadEvent += Health_OnDeadEvent2;
-        Gun.OnShootAnimation -= ShootAnimation;
+        Gun.OnShootAnimation -= Gun_ShootAnimation;
+
+        health.OnDeadEvent += Health_OnDeadEvent;
+
+        TopDownPlayerController.OnCanWalk -= TopDownPlayerController_CanWalk;
+
+        Gun.OnGetGun -= Gun_HaveGun;
+        WeaponSwitching.OnGetGun -= Gun_HaveGun;
     }
 }

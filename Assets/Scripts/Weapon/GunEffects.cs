@@ -1,22 +1,13 @@
 using UnityEngine;
 using UnityEngine.VFX;
 
-//[RequireComponent(typeof(AudioSource))]
+//This is where muzzleflash playback is performed
 public class GunEffects : MonoBehaviour
 {
-    [Header("Audios")]
-    //[SerializeField] AudioSource gunAudioSource;
-
     [Header("Effects")]
     [SerializeField] VisualEffect muzzleFlash;
 
-
     [SerializeField] float muzzleFlashDuration = 1f;
-
-    private void Awake()
-    {
-        //gunAudioSource = GetComponent<AudioSource>();
-    }
 
     private void OnEnable()
     {
@@ -25,13 +16,13 @@ public class GunEffects : MonoBehaviour
 
     public void SpawnEffect()
     {
-        GameObject muzzleflash = BulletPool.Instance.GetMuzzleflash();
+        GameObject muzzleflash = BulletPool.Instance.GetMuzzleflash(); //Get the muzzleflash from the pool
         muzzleFlash.Play();
     }
 
     public void DestroyMuzzleflash()
     {
-        BulletPool.Instance.ReturnMuzzleflash(gameObject);
+        BulletPool.Instance.ReturnMuzzleflash(gameObject); //Return the muzzleflash to the pool
     }
 
     private void OnDisable()

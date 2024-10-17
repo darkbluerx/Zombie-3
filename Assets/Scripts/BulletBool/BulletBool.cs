@@ -1,23 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Here object bool is used for firing projectiles. With this we adjust better performance.
+ * The idea of object boolean is to reuse the same objects instead of creating new ones.
+ */
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool Instance { get; private set; } //Singleton
 
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] int poolSize = 30;
+    [SerializeField, Tooltip("Fired projectiles object bool size")] int poolSize = 30;
     [Space]
 
     [SerializeField] GameObject muzzleflashPrefab;
-    [SerializeField] int muzzleflashPoolSize = 30;
+    [SerializeField, Tooltip("Muzzleflash object bool size")] int muzzleflashPoolSize = 30;
 
-    List<GameObject> bulletsBool;
-    List<GameObject> muzzleflashes;
+    List<GameObject> bulletsBool; //List of fired projectiles
+    List<GameObject> muzzleflashes; //List of muzzleflashes
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null) //Singleton
         {
             Debug.LogError("There's more than one BulletBool! " + transform + " - " + Instance);
             Destroy(gameObject);
@@ -47,7 +51,7 @@ public class BulletPool : MonoBehaviour
         }
     }
 
-    public GameObject GetBullet()
+    public GameObject GetBullet() //Get the fired projectile
     {
         foreach (var bullet in bulletsBool)
         {
@@ -64,7 +68,7 @@ public class BulletPool : MonoBehaviour
     }
 
 
-    public GameObject GetMuzzleflash()
+    public GameObject GetMuzzleflash() //Get the muzzleflash
     {
         foreach (var muzzleflash in muzzleflashes)
         {
@@ -80,7 +84,7 @@ public class BulletPool : MonoBehaviour
         return newMuzzleflash;
     }
 
-    public void ReturnBullet(GameObject bullet)
+    public void ReturnBullet(GameObject bullet) //Return the fired projectile
     {
         bullet.SetActive(false);
     }
