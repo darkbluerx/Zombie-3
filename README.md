@@ -8,19 +8,10 @@ Description: This game was developed by Antti Sironen and Toni Luukkanen. A top-
 Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 ## Table of Contents
-- Controls
 - Applications Used
+- Controls
 - Credits
 - Sources
-
-## Controls
-
-- Pause/Options: P 
-- Moving: A, S, D, W
-- Run: Shift
-- Shooting: Left Mouse
-- Reload: R 
-- Action: F
 
 ## Applications Used
 
@@ -28,13 +19,27 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - 3D Tilemap [MGL-3D-Rule-Tiles](https://github.com/michaelsgamelab/MGL-3D-Rule-Tiles/tree/main) `Building the levels with 3d blocks`
 - Unity Package: 2d Tilemap Editor, Universal RP
 
+## Controls
+
+- Pause/Options: P 
+- Moving: A, S, D, W
+- Run: Shift
+- Shooting/Aiming: Left Mouse
+- Reload: R 
+- Action: F
+
 ## Credits:
 
-- Developed by Antti Sironen & Toni Luukkanen
+- 3D models & Animations: Toni Luukkanen
+- Developed by: Antti Sironen & Toni Luukkanen
 - Game Design: Antti Sironen & Toni Luukkanen
-- UI Interface: Antti Sironen
+- Level Design: Antti Sironen & Toni Luukkanen
+- Level Making: Antti Sironen
+- Lighting & Post Processing: Antti Sironen
+
 <br>
-- **Programming:**
+
+- Programming:
 - Animations: player and enemy animations
 - Enemies: enemy behavior, damage, spawn system
 - Items: weapon and ammunition collection
@@ -45,19 +50,17 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Units: health and damage system, stat inheritance from ScriptableObjects
 - Weapons & ammunition: weapon functions, shooting, reloading, weapon switching, ammunition usage. Ammunition functions, damage, hits
 - World: traps (damage, animation, functions), doors, tasks/puzzles
-<br>
-- Level Design: Antti Sironen & Toni Luukkanen
-- Lighting & Post Processing: Antti Sironen
-- Level Making: Antti Sironen
-- 3D models & Animations: Toni Luukkanen
-- Video Editing: Antti Sironen
 
+<br>
+
+- UI Interface: Antti Sironen
+- Video Editing: Antti Sironen
 
 ## Sources
 
 UI
 - https://www.freepik.com/
-- https://playground.com/design
+- AI Image Generation: https://playground.com/design
 
 TEXT
 - Baron Kuffner
