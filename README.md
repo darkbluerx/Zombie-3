@@ -9,7 +9,6 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 
 ## Table of Contents
-- Game Development
 - Controls
 - Applications Used
 - Credits
@@ -24,9 +23,9 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Shooting: Left Mouse
 - Reload: R 
 - Action: F
-
+-
+<br>
 ## Game Development - Scripts
-
 - *Enemy Scripts:*
 - Enemy, controls the playback of the enemy's sounds, damage functions, inherits the enemy's stats from the Scriptable object
 - ZombieAnimations, control the zombies's animations using events.
@@ -35,19 +34,15 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Health,this script is used to manage the zombie's health.
 
 <br>
-
 - *Gun & Bullet Scripts:*
 
 <br>
-
 - *Levels:*
-
 - Door
 - DoorAnimation, controls the door's animations using events.
 - PlayerHint, controls the players hint UI
 
 <br>
-
 - *Player Scripts:* 
 - PlayerTopDownController, controls the weapon's aim and movement
 - PlayerAnimations, control the player's animations using events.
@@ -56,13 +51,11 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Health,this script is used to manage the player's health.
 
 <br>
-
 - *UI*
 - HealthBar, controls the player's health bar
 - Menu
 - Map
 
-- 
 ## Applications Used
 
 - [A* Pathfinding Project Pro](https://arongranberg.com/astar/)`AI Path Finding`
@@ -74,8 +67,22 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Developed by Antti Sironen & Toni Luukkanen
 - Game Design: Antti Sironen & Toni Luukkanen
 - UI Interface: Antti Sironen
-- Programming: Antti Sirone
+- Programming:
+Animations: player and enemy animations
+Enemies: enemy behavior, damage, spawn system
+Items: weapon and ammunition collection
+Menu: main menu, level menu, sound settings
+Player controls: movement/aiming
+Sounds: sound playback through events
+UI: weapon/weapon information, health bar, menus (menu, levels)
+Units: health and damage system, stat inheritance from ScriptableObjects
+Weapons & ammunition: weapon functions, shooting, reloading, weapon switching, ammunition usage. Ammunition functions, damage, hits
+World: traps (damage, animation, functions), doors, tasks/puzzles
+
+<br>
+
 - Level Design: Antti Sironen & Toni Luukkanen
+- Lighting & Post Processing: Antti Sironen
 - Level Making: Antti Sironen
 - 3D models & Animations: Toni Luukkanen
 - Video Editing: Antti Sironen
