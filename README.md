@@ -3,16 +3,17 @@
 - Status: Completed
 - Unity Version: 2022.3.6f1
  
-Description: A top-down, 3D world horror-action shooter game.
+Description: This game was developed by Antti Sironen and Toni Luukkanen. A top-down, 3D world horror-action shooter game.
 
 Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 
 ## Table of Contents
--Controls
--Applications
--Credits
--Sources
+- Game Development
+- Controls
+- Applications Used
+- Credits
+- Sources
 
 
 ## Controls
@@ -24,14 +25,49 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Reload: R 
 - Action: F
 
+## Game Development - Scripts
 
-## Applications
+- *Enemy Scripts:*
+- Enemy, controls the playback of the enemy's sounds, damage functions, inherits the enemy's stats from the Scriptable object
+- ZombieAnimations, control the zombies's animations using events.
+- EnemyStatsSO, Scriptable object that stores the enemy's stats. Used by Enemy and Health scripts
+- ZombieSpawner , spawns the zombies in the game
+- Health,this script is used to manage the zombie's health.
+
+<br>
+
+- *Gun & Bullet Scripts:*
+
+<br>
+
+- *Levels:*
+
+- Door
+- DoorAnimation, controls the door's animations using events.
+- PlayerHint, controls the players hint UI
+
+<br>
+
+- *Player Scripts:* 
+- PlayerTopDownController, controls the weapon's aim and movement
+- PlayerAnimations, control the player's animations using events.
+- Player, controls the playback of the player's sounds, damage functions, inherits the player's stats from the Scriptable object 
+- UnitsStatsSO, Scriptable object that stores the player's stats. Used Player and Health s
+- Health,this script is used to manage the player's health.
+
+<br>
+
+- *UI*
+- HealthBar, controls the player's health bar
+- Menu
+- Map
+
+- 
+## Applications Used
 
 - [A* Pathfinding Project Pro](https://arongranberg.com/astar/)`AI Path Finding`
 - 3D Tilemap [MGL-3D-Rule-Tiles](https://github.com/michaelsgamelab/MGL-3D-Rule-Tiles/tree/main) `Building the levels with 3d blocks`
-- Unity Package
-- 2d Tilemap Editor
-- Universal RP
+- Unity Package: 2d Tilemap Editor, Universal RP
 
 ## Credits:
 
@@ -39,9 +75,6 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Game Design: Antti Sironen & Toni Luukkanen
 - UI Interface: Antti Sironen
 - Programming: Antti Sirone
-Health System
-Gun System
-
 - Level Design: Antti Sironen & Toni Luukkanen
 - Level Making: Antti Sironen
 - 3D models & Animations: Toni Luukkanen
