@@ -8,10 +8,10 @@ Summary: This game was developed by Antti Sironen and Toni Luukkanen. A top-down
 Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 ## Table of Contents
-- Applications Used
-- Controls
-- Credits
-- Sources
+- [Applications Used](#applications-used)
+- [Controls](#game-controls)
+- [Credits](#credits)
+- [Sources](#sources)
 
 ## Applications Used
 - 2d Tilemap Editor
