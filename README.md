@@ -74,4 +74,5 @@ AUDIO
 - Soundtracks: https://www.newgrounds.com/
 
 TRAP MODELS & COFFING
-- https://www.cgtrader.com/
+- https://www.cgtrader.com/items/635558/download-page
+- https://www.cgtrader.com/free-3d-print-models/miniatures/figurines/coffin-model
