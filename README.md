@@ -1,5 +1,5 @@
 # **Project: Zombie-3 - Patient X: One Survivor**
-- Last Updated: 17.10.2024
+- Last Updated: 28.10.2024
 - Status: Completed
 - Unity Version: 2022.3.6f1
  
@@ -39,7 +39,8 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Lighting & Post Processing: Antti Sironen
 - Project management: Antti Sironen
 - Play Testing: Decelopers & Testers
-
+- UI: Antti Sironen
+- Video Editing: Antti Sironen
 <br>
 
 - **Programming:**
@@ -53,11 +54,7 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Units: health and damage system, stat inheritance from ScriptableObjects
 - Weapons & ammunition: weapon functions, shooting, reloading, weapon switching, ammunition usage. Ammunition functions, damage, hits
 - World: traps (damage, animation, functions), doors, tasks/puzzles
-
 <br>
-
-- UI: Antti Sironen
-- Video Editing: Antti Sironen
 
 ## Sources
 
