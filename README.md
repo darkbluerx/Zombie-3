@@ -22,12 +22,12 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 ## Game Controls
 
+- Action: F
 - Pause/Options: P 
 - Moving: A, S, D, W
+- Reload: R 
 - Run: Shift
 - Shooting/Aiming: Left Mouse
-- Reload: R 
-- Action: F
 
 ## Credits:
 
@@ -43,7 +43,7 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 - Video Editing: Antti Sironen
 <br>
 
-- **Programming:**
+- **Programming: Antti Sironen**
 - Animations: player and enemy animations
 - Enemies: enemy behavior, damage, spawn system
 - Items: weapon and ammunition collection
@@ -58,18 +58,18 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 ## Sources
 
-UI
-- https://www.freepik.com/
-- AI Image Generation: https://playground.com/design
+AUDIO
+- Sounds: https://freesound.org/ 
+- Soundtracks: https://www.newgrounds.com/
 
 TEXT
 - Baron Kuffner
 https://www.1001fonts.com/baron-kuffner-font.html
 
-AUDIO
-- Sounds: https://freesound.org/ 
-- Soundtracks: https://www.newgrounds.com/
-
-TRAP MODELS & COFFING
+TRAP MODELS & COFFIN
 - https://www.cgtrader.com/items/635558/download-page
 - https://www.cgtrader.com/free-3d-print-models/miniatures/figurines/coffin-model
+
+UI
+- AI Image Generation: https://playground.com/design
+- https://www.freepik.com/
