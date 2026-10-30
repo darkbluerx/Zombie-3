@@ -31,20 +31,19 @@ Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
 
 ## Credits:
 
-- 3D models & Animations: Toni Luukkanen
 - Developed by: Antti Sironen & Toni Luukkanen
-- Game Design: Antti Sironen & Toni Luukkanen
-- Level Design: Antti Sironen & Toni Luukkanen
-- Level Making: Antti Sironen
-- Lighting & Post Processing: Antti Sironen
+- 3D models & animations: Toni Luukkanen
+- Game design: Antti Sironen & Toni Luukkanen
+- Level design: Antti Sironen & Toni Luukkanen
+- Level making, lighting & post-processing: Antti Sironen
 - Project management: Antti Sironen
-- Play Testing: Decelopers & Testers
 - UI: Antti Sironen
-- Video Editing: Antti Sironen
+- Video editing: Antti Sironen
+- Play testing: Developers & Testers
 <br>
 
 - **Programming: Antti Sironen**
-- Animations: player and enemy animations
+- Animation control: player and enemy animation logic
 - Enemies: enemy behavior, damage, spawn system
 - Items: weapon and ammunition collection
 - Menu: main menu, level menu, sound settings
