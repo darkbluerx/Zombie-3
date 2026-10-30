@@ -10,7 +10,10 @@ Playable on itch.io: https://blueyurei.itch.io/patient-x-one-survivor
 <a href="https://www.youtube.com/watch?v=mQGZqGw_T2I"><img src="https://img.youtube.com/vi/mQGZqGw_T2I/hqdefault.jpg" alt="Watch the trailer" width="400"></a>
 ## Screenshots
 
-<img src="docs/tomb-chamber.png" alt="Tomb Chamber" width="300"> <img src="docs/mafia-house.png" alt="Mafia House" width="300"> <img src="docs/ruined-castle.png" alt="Ruined Castle" width="300">
+<img src="https://github.com/user-attachments/assets/1129bb64-4ff8-402f-83af-34a619a237a4" alt="Level Tomb Chamber" width="32%"> <img src="https://github.com/user-attachments/assets/afd59b49-bb06-4e9c-a298-388fda168d61" alt="Level Mafia House" width="32%"> <img src="https://github.com/user-attachments/assets/44e49d81-5b6c-43e0-818d-7086d3d3dc4e" alt="Level Ruined Castle" width="32%">
+
+
+
 
 ## Table of Contents
 - [Screenshots](#screenshots)
