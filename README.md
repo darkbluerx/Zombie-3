@@ -7,15 +7,10 @@ Summary: This game was developed by Antti Sironen and Toni Luukkanen. A top-down
 
 Playable on itch.io: https://blueyurei.itch.io/patient-x-one-survivor
 
-[![Watch the trailer](https://img.youtube.com/vi/mQGZqGw_T2I/hqdefault.jpg)](https://www.youtube.com/watch?v=mQGZqGw_T2I)
-
+<a href="https://www.youtube.com/watch?v=mQGZqGw_T2I"><img src="https://img.youtube.com/vi/mQGZqGw_T2I/hqdefault.jpg" alt="Watch the trailer" width="400"></a>
 ## Screenshots
 
-<img width="1919" height="1079" alt="Level Tomb Chamber" src="https://github.com/user-attachments/assets/05502d0c-19bb-4cc4-8968-45d08454ee4e" />
-
-<img width="1919" height="1079" alt="Level Mafia House" src="https://github.com/user-attachments/assets/6318b20f-83bb-4b66-b55f-fe4e16bfe986" />
-
-<img width="1919" height="1079" alt="Level Ruined Castle" src="https://github.com/user-attachments/assets/adea4827-f8a5-419c-a458-c7beb9d6078f" />
+<img src="docs/tomb-chamber.png" alt="Tomb Chamber" width="300"> <img src="docs/mafia-house.png" alt="Mafia House" width="300"> <img src="docs/ruined-castle.png" alt="Ruined Castle" width="300">
 
 ## Table of Contents
 - [Screenshots](#screenshots)
