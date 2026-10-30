@@ -5,9 +5,20 @@
  
 Summary: This game was developed by Antti Sironen and Toni Luukkanen. A top-down, 3D world horror-action shooter game.
 
-Playable on ITCH.IO: https://blueyurei.itch.io/patient-x-one-survivor
+Playable on itch.io: https://blueyurei.itch.io/patient-x-one-survivor
+
+[![Watch the trailer](https://img.youtube.com/vi/mQGZqGw_T2I/hqdefault.jpg)](https://www.youtube.com/watch?v=mQGZqGw_T2I)
+
+## Screenshots
+
+<img width="1919" height="1079" alt="Level Tomb Chamber" src="https://github.com/user-attachments/assets/05502d0c-19bb-4cc4-8968-45d08454ee4e" />
+
+<img width="1919" height="1079" alt="Level Mafia House" src="https://github.com/user-attachments/assets/6318b20f-83bb-4b66-b55f-fe4e16bfe986" />
+
+<img width="1919" height="1079" alt="Level Ruined Castle" src="https://github.com/user-attachments/assets/adea4827-f8a5-419c-a458-c7beb9d6078f" />
 
 ## Table of Contents
+- [Screenshots](#screenshots)
 - [Applications Used](#applications-used)
 - [Controls](#game-controls)
 - [Credits](#credits)
